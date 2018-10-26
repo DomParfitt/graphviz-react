@@ -15,7 +15,7 @@ import Graphviz from 'graphviz-react';
 To render a Graphviz component as part of an existing React component simply include the Graphviz tag as part of that component's `render` function along with the `dot` prop.
 
 The below shows a simple React component using the Graphviz component to render a simple DOT string.
-```javascript
+```jsx
 class MyComponent extends Component {
     render() {
         return(
