@@ -1,7 +1,7 @@
 import { graphviz, GraphvizOptions } from 'd3-graphviz';
 import * as React from 'react';
 
-class Graphviz extends React.Component<IGraphvizProps, any> {
+export class Graphviz extends React.Component<IGraphvizProps, any> {
 
     private static count = 0;
     private static defaultOptions: GraphvizOptions = {
@@ -58,5 +58,3 @@ export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
     dot: string,
     options?: GraphvizOptions,
 }
-
-export default Graphviz;
