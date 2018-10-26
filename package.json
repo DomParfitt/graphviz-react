@@ -16,7 +16,7 @@
     "type": "git",
     "url": "https://github.com/DomParfitt/graphviz-react.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "d3-graphviz": "^2.6.0",
     "react": "^16.6.0",
