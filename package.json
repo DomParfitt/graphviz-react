@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React component for displaying Graphviz graphs",
   "main": "lib/Graphviz.js",
+  "types": "lib/Graphviz.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
