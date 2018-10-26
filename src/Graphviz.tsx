@@ -26,14 +26,14 @@ class Graphviz extends React.Component<IGraphvizProps, any> {
     }
 
     public componentDidMount() {
-        this.loadGraph();
+        this.renderGraph();
     }
 
     public componentDidUpdate() {
-        this.loadGraph();
+        this.renderGraph();
     }
 
-    private loadGraph() {
+    private renderGraph() {
         graphviz('#' + this.id)
             .options(this.options())
             .renderDot(this.props.dot);
