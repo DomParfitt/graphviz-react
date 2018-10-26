@@ -9,13 +9,13 @@ npm install graphviz-react
 
 ## Usage
 Add an import to the top of the component you wish to use Graphviz with.
-```
+```javascript
 import Graphviz from 'graphviz-react';
 ```
 To render a Graphviz component as part of an existing React component simply include the Graphviz tag as part of that component's `render` function along with the `dot` prop.
 
 The below shows a simple React component using the Graphviz component to render a simple DOT string.
-```
+```javascript
 class MyComponent extends Component {
     render() {
         return(
@@ -31,7 +31,7 @@ The Graphviz component has two props: `dot` and `options`.
 `dot` is required for all instances of the component. It expects a string containing a valid graph definition using the Graphviz DOT language. Details of the DOT language can be found [here](https://graphviz.gitlab.io/_pages/doc/info/lang.html). Note that neither the component nor the underlying renderer check the validity of the DOT string.
 
 `options` is an optional array of rendering options for the component. It is aligned with the options accepted by the d3-graphviz renderer (see the [API](https://www.npmjs.com/package/d3-graphviz#creating-a-graphviz-renderer) for details). The follow values are set by default:
-```        
+```javascript        
 fit: true
 height: 500
 width: 500
