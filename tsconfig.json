@@ -5,6 +5,7 @@
       "module": "commonjs",
       "noImplicitAny": true,
       "strictNullChecks": true,
+      "suppressImplicitAnyIndexErrors": true,
       "removeComments": true,
       "declaration": true,
       "sourceMap": true,
