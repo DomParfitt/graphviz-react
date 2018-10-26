@@ -10,7 +10,7 @@ npm install graphviz-react
 ## Usage
 Add an import to the top of the component you wish to use Graphviz with.
 ```javascript
-import Graphviz from 'graphviz-react';
+import { Graphviz } from 'graphviz-react';
 ```
 To render a Graphviz component as part of an existing React component simply include the Graphviz tag as part of that component's `render` function along with the `dot` prop.
 
