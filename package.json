@@ -11,6 +11,10 @@
     "Graphviz"
   ],
   "author": "Dom Parfitt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DomParfitt/graphviz-react.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/d3-graphviz": "^2.6.1",
