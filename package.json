@@ -1,0 +1,24 @@
+{
+  "name": "graphviz-react",
+  "version": "1.0.0",
+  "description": "React component for displaying Graphviz graphs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Graphviz"
+  ],
+  "author": "Dom Parfitt",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/d3-graphviz": "^2.6.1",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "d3-graphviz": "^2.6.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "typescript": "^3.1.3"
+  }
+}
