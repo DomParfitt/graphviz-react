@@ -17,13 +17,15 @@
     "url": "https://github.com/DomParfitt/graphviz-react.git"
   },
   "license": "ISC",
+  "dependencies": {
+    "d3-graphviz": "^2.6.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
   "devDependencies": {
     "@types/d3-graphviz": "^2.6.1",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
-    "d3-graphviz": "^2.6.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
     "typescript": "^3.1.3"
   }
 }
