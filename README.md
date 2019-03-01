@@ -3,6 +3,7 @@
 
 ## Install
 From the root directory of your React project run the following command.
+
 ```
 npm install graphviz-react
 ```
@@ -14,16 +15,29 @@ import { Graphviz } from 'graphviz-react';
 ```
 To render a Graphviz component as part of an existing React component simply include the Graphviz tag as part of that component's `render` function along with the `dot` prop.
 
-The below shows a simple React component using the Graphviz component to render a simple DOT string.
+The below shows a simple React component using the Graphviz component to render a simple DOT string ([GraphViz Pocket Reference](https://graphs.grevian.org/example)).
+
 ```jsx
-class MyComponent extends Component {
-    render() {
-        return(
-            <Graphviz dot={"digraph{node1}"} />
-        );
-    }
-}
+<Graphviz dot={`graph {
+  grandparent -- "parent A";
+  child;
+  "parent B" -- child;
+  grandparent --  "parent B";
+}`} />
 ```
+
+<img width="513" src="https://user-images.githubusercontent.com/1935696/53635811-951e7f00-3c1e-11e9-8a68-68cb39c39e25.png">
+
+```jsx
+<Graphviz dot={`digraph {
+  a -> b;
+  c;
+  d -> c;
+  a -> d;
+}`} />
+```
+
+<img width="402" src="https://user-images.githubusercontent.com/1935696/53635812-951e7f00-3c1e-11e9-9b31-07d868f9d67f.png">
 
 ### Props
 The Graphviz component has two props: `dot` and `options`.
