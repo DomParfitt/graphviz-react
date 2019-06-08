@@ -31,7 +31,7 @@ The below shows a simple React component using the Graphviz component to render 
 }`} />
 ```
 
-<img width="513" src="./docs/example-graph.png">
+<img width="513" src="./img/example-graph.png">
 
 ```jsx
 <Graphviz dot={`digraph {
@@ -42,7 +42,7 @@ The below shows a simple React component using the Graphviz component to render 
 }`} />
 ```
 
-<img width="402" src="./docs/example-digraph.png">
+<img width="402" src="./img/example-digraph.png">
 
 ### Props
 
