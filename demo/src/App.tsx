@@ -11,18 +11,20 @@ const defaults: GraphvizOptions = {
   fit: true,
   zoom: false,
   scale: 1,
+  tweenPrecision: 1,
+  engine: 'dot',
 };
 
 const options: IOption[] = [
   { name: 'useWorker', type: 'boolean' },
-  { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'] },
-  { name: 'totalMemory', type: 'number' },
+  { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'], default: defaults.engine },
+  // { name: 'totalMemory', type: 'number' },
   { name: 'keyMode', type: 'list', values: ['title', 'id', 'tag-index', 'index'] },
   { name: 'fade', type: 'boolean' },
   { name: 'tweenPaths', type: 'boolean' },
   { name: 'tweenShapes', type: 'boolean' },
   { name: 'convertEqualSidedPolygons', type: 'boolean' },
-  { name: 'tweenPrecision', type: 'number' },
+  { name: 'tweenPrecision', type: 'number', default: defaults.tweenPrecision },
   { name: 'growEnteringEdges', type: 'boolean' },
   { name: 'zoom', type: 'boolean', default: defaults.zoom },
   { name: 'width', type: 'number', default: defaults.width },
