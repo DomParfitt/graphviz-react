@@ -56,7 +56,9 @@ export default class App extends React.Component<any, AppState> {
                 <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
               </td>
               <td>
-                <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
+                <div className="graphviz">
+                  <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
+                </div>
               </td>
             </tr>
           </tbody>
