@@ -8,7 +8,7 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     this.state = {
       dot: this.props.initial || '',
       error: '',
-      temp: '',
+      temp: this.props.initial || '',
     }
   }
 
