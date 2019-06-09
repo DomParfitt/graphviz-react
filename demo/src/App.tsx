@@ -1,10 +1,17 @@
 import React from 'react';
-// import './App.css';
-
 
 import { Graphviz } from 'graphviz-react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
+import { GraphvizOptions } from 'd3-graphviz';
+
+const defaults: GraphvizOptions = {
+  height: 500,
+  width: 500,
+  fit: true,
+  zoom: false,
+  scale: 1,
+};
 
 const options: IOption[] = [
   { name: 'useWorker', type: 'boolean' },
@@ -17,11 +24,11 @@ const options: IOption[] = [
   { name: 'convertEqualSidedPolygons', type: 'boolean' },
   { name: 'tweenPrecision', type: 'number' },
   { name: 'growEnteringEdges', type: 'boolean' },
-  { name: 'zoom', type: 'boolean' },
-  { name: 'width', type: 'number' },
-  { name: 'height', type: 'number' },
-  { name: 'scale', type: 'number' },
-  { name: 'fit', type: 'boolean' },
+  { name: 'zoom', type: 'boolean', default: defaults.zoom },
+  { name: 'width', type: 'number', default: defaults.width },
+  { name: 'height', type: 'number', default: defaults.height },
+  { name: 'scale', type: 'number', default: defaults.scale },
+  { name: 'fit', type: 'boolean', default: defaults.fit },
 ];
 
 export default class App extends React.Component<any, AppState> {
@@ -30,7 +37,7 @@ export default class App extends React.Component<any, AppState> {
     super(props);
     this.state = {
       dot: 'graph { a }',
-      graphOptions: {},
+      graphOptions: defaults,
     };
   }
 
