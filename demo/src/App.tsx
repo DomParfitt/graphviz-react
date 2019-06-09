@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 
 import { Graphviz } from 'graphviz-react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
@@ -41,10 +42,6 @@ export default class App extends React.Component<any, AppState> {
       dot: 'graph { a }',
       graphOptions: defaults,
     };
-  }
-
-  public componentDidUpdate() {
-    console.log(JSON.stringify(this.state.graphOptions));
   }
 
   public render(): JSX.Element {
