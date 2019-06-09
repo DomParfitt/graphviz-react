@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import { Graphviz } from 'graphviz-react';
-import { OptionSelector } from './components/OptionSelector';
+import { OptionsSelector } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 
 export default class App extends React.Component<any, AppState> {
@@ -24,7 +24,7 @@ export default class App extends React.Component<any, AppState> {
           <tr>
             <td>
               <GraphInput initial={this.state.dot} onUpdate={(dot) => this.setState({dot})} />
-              <OptionSelector />
+              <OptionsSelector />
             </td>
             <td>
               <Graphviz dot={this.state.dot} options={this.state.graphOptions}/>

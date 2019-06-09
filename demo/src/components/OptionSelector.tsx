@@ -1,6 +1,6 @@
 import React from "react";
 
-export class OptionSelector extends React.Component<any, any> {
+export class OptionsSelector extends React.Component<OptionsSelectorProps, any> {
 
     public render() {
         return (
@@ -78,4 +78,8 @@ export class OptionSelector extends React.Component<any, any> {
             </div>
         );
     }
+}
+
+export interface OptionsSelectorProps {
+    onOptionUpdate: () => void,
 }
