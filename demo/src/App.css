@@ -10,4 +10,9 @@ table {
 textarea {
   width: 99%;
   height: 150px;
+  resize: none
+}
+
+.graphviz {
+  text-align: center
 }
