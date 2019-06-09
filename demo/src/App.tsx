@@ -1,47 +1,42 @@
 import React from 'react';
-import './App.css';
-import { read } from 'graphlib-dot';
+// import './App.css';
+
 
 import { Graphviz } from 'graphviz-react';
+import { OptionSelector } from './components/OptionSelector';
+import { GraphInput } from './components/GraphInput';
 
-class App extends React.Component<any, any> {
+export default class App extends React.Component<any, AppState> {
 
   constructor(props: any) {
     super(props);
     this.state = {
       dot: 'graph { a }',
-      error: '',
-      temp: ''
+      graphOptions: {},
     };
-    
   }
 
   render(): JSX.Element {
     return (
-      <div className='App'>
-        <div>
-          <textarea placeholder={this.state.dot} onChange={(event) => {
-            this.setState({ temp: event.target.value });
-          }} />
-        </div>
-        <div style={{ color: 'red' }}>{this.state.error}</div>
-        <button onClick={() => {
-          try {
-            read(this.state.temp);
-            this.setState({
-              dot: this.state.temp,
-              error: ''
-            })
-          } catch (err) {
-            this.setState({
-              error: `Parse Error: ${err.message}`,
-            });
-          }
-        }}>Update</button>
-        <Graphviz dot={this.state.dot} />
+      <div>
+        <h1>Graphviz-React</h1>
+        <table>
+          <tr>
+            <td>
+              <GraphInput initial={this.state.dot} onUpdate={(dot) => this.setState({dot})} />
+              <OptionSelector />
+            </td>
+            <td>
+              <Graphviz dot={this.state.dot} options={this.state.graphOptions}/>
+            </td>
+          </tr>
+        </table>
       </div>
     );
   }
 }
 
-export default App;
+interface AppState {
+  dot: string,
+  graphOptions: any,
+}
