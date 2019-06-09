@@ -3,77 +3,63 @@ import React from "react";
 export class OptionsSelector extends React.Component<OptionsSelectorProps, any> {
 
     public render() {
+        const items: JSX.Element[] = [];
+        this.props.options.forEach((option, index) => {
+            let input: JSX.Element =
+                <input
+                    key={index}
+                    type="checkbox"
+                    onChange={(event) => this.props.onOptionUpdate(option.name, event.target.checked)}
+                />;
+
+            switch (option.type) {
+                case 'number':
+                    input =
+                        <input
+                            key={index}
+                            type="number"
+                            onChange={(event) => this.props.onOptionUpdate(option.name, event.target.value)}
+                        />;
+                    break;
+                case 'input':
+                    input =
+                        <input
+                            key={index}
+                            type="input"
+                            onChange={(event) => this.props.onOptionUpdate(option.name, event.target.value)}
+                        />;
+                    break;
+                case 'list':
+                    const opts: JSX.Element[] = [];
+                    option.values!.forEach((value, index) => {
+                        opts.push(
+                            <option key={index} value={value}>{value}</option>
+                        );
+                    });
+                    input = <select
+                        key={index}
+                        onChange={(event) => this.props.onOptionUpdate(option.name, event.target.value)}>
+                        {opts}</select>
+                    break;
+                default:
+                    break;
+            }
+
+            items.push(
+                <tr key={index}>
+                    <td>{option.name}</td>
+                    <td>
+                        {input}
+                    </td>
+                </tr>
+            );
+        });
         return (
             <div>
                 <table>
-                    <tr>
-                        <td>useWorker</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>engine</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>totalMemory</td>
-                        <td><input type="number" /></td>
-                    </tr>
-                    <tr>
-                        <td>keyMode</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>fade</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>tweenPaths</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>tweenShapes</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>convertEqualSidedPolygons</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>tweenPrecision</td>
-                        <td><input type="number" /></td>
-                    </tr>
-                    <tr>
-                        <td>growEnteringEdges</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>zoom</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
-                    <tr>
-                        <td>zoomScaleExtent</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>zoomTranslateExtent</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>width</td>
-                        <td><input type="number" /></td>
-                    </tr>
-                    <tr>
-                        <td>height</td>
-                        <td><input type="number" /></td>
-                    </tr>
-                    <tr>
-                        <td>scale</td>
-                        <td><input type="number" /></td>
-                    </tr>
-                    <tr>
-                        <td>fit</td>
-                        <td><input type="checkbox" /></td>
-                    </tr>
+                    <tbody>
+                        {items}
+                    </tbody>
                 </table>
             </div>
         );
@@ -81,5 +67,13 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
 }
 
 export interface OptionsSelectorProps {
-    onOptionUpdate: () => void,
+    options: Option[],
+    onOptionUpdate: (name: string, value: any) => void,
+}
+
+export interface Option {
+    name: string,
+    type: 'boolean' | 'number' | 'input' | 'list',
+    values?: string[],
+    default?: any,
 }
