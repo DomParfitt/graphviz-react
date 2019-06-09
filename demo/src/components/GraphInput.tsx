@@ -14,7 +14,7 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
 
   public render() {
     return (
-      <div>
+      <div className="graph-input">
         <textarea defaultValue={this.state.dot} onChange={(event) => {
           this.setState({ temp: event.target.value });
         }} />

@@ -4,9 +4,9 @@ export class Option extends React.Component<OptionProps, any> {
 
   public render() {
     return (
-      <tr >
-        <td>{this.props.name}</td>
-        <td>
+      <tr className="option">
+        <td className="option-name">{this.props.name}</td>
+        <td className="option-value">
           {this.getInputElement()}
         </td>
       </tr>

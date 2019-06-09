@@ -19,7 +19,7 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
     });
 
     return (
-      <table>
+      <table className="options-selector">
         <tbody>
           {items}
         </tbody>
