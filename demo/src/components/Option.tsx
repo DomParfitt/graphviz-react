@@ -2,10 +2,6 @@ import React from "react";
 
 export class Option extends React.Component<OptionProps, any> {
 
-    constructor(props: OptionProps) {
-        super(props);
-    }
-
     public render() {
         return (
             <tr >
