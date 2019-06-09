@@ -2,13 +2,6 @@ import React from "react";
 
 export class Option extends React.Component<OptionProps, any> {
 
-  constructor(props: OptionProps) {
-    super(props);
-    this.state = {
-      value: this.props.default
-    };
-  }
-
   public render() {
     return (
       <tr >
@@ -26,12 +19,9 @@ export class Option extends React.Component<OptionProps, any> {
         return (
           <input
             type={'checkbox'}
-            checked={this.state.value}
+            checked={this.props.default}
             onChange={
-              (event) => {
-                this.setState({ value: event.target.value });
-                this.props.onOptionUpdate(this.props.name, event.target.checked)
-              }
+              (event) => this.props.onOptionUpdate(this.props.name, event.target.checked)
             } />
         );
       case 'number':
@@ -39,12 +29,9 @@ export class Option extends React.Component<OptionProps, any> {
         return (
           <input
             type={this.props.type}
-            value={this.state.value}
+            defaultValue={this.props.default}
             onChange={
-              (event) => {
-                this.setState({ value: event.target.value });
-                this.props.onOptionUpdate(this.props.name, event.target.value)
-              }
+              (event) => this.props.onOptionUpdate(this.props.name, event.target.value)
             } />
         );
       case 'list':
@@ -55,7 +42,9 @@ export class Option extends React.Component<OptionProps, any> {
           );
         });
         return (
-          <select onChange={(event) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
+          <select
+            defaultValue={this.props.default}
+            onChange={(event) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
             {opts}
           </select>
         );
