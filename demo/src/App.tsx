@@ -3,10 +3,10 @@ import React from 'react';
 
 
 import { Graphviz } from 'graphviz-react';
-import { OptionsSelector, Option } from './components/OptionSelector';
+import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 
-const options: Option[] = [
+const options: IOption[] = [
   { name: 'useWorker', type: 'boolean' },
   { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'] },
   { name: 'totalMemory', type: 'number' },
