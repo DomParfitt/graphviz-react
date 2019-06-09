@@ -13,6 +13,7 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
           name={option.name}
           type={option.type}
           values={option.values}
+          default={option.default}
           onOptionUpdate={this.props.onOptionUpdate} />
       );
     });
