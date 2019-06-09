@@ -2,6 +2,13 @@ import React from "react";
 
 export class Option extends React.Component<OptionProps, any> {
 
+  constructor(props: OptionProps) {
+    super(props);
+    this.state = {
+      value: this.props.default
+    };
+  }
+
   public render() {
     return (
       <tr >
@@ -19,14 +26,26 @@ export class Option extends React.Component<OptionProps, any> {
         return (
           <input
             type={'checkbox'}
-            onChange={(event) => this.props.onOptionUpdate(this.props.name, event.target.checked)} />
+            checked={this.state.value}
+            onChange={
+              (event) => {
+                this.setState({ value: event.target.value });
+                this.props.onOptionUpdate(this.props.name, event.target.checked)
+              }
+            } />
         );
       case 'number':
       case 'input':
         return (
           <input
             type={this.props.type}
-            onChange={(event) => this.props.onOptionUpdate(this.props.name, event.target.value)} />
+            value={this.state.value}
+            onChange={
+              (event) => {
+                this.setState({ value: event.target.value });
+                this.props.onOptionUpdate(this.props.name, event.target.value)
+              }
+            } />
         );
       case 'list':
         const opts: JSX.Element[] = [];
