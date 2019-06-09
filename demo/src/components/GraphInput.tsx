@@ -19,21 +19,23 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
                     this.setState({ temp: event.target.value });
                 }} />
                 <div style={{ color: 'red' }}>{this.state.error}</div>
-                <button onClick={() => {
-                    try {
-                        read(this.state.temp);
-                        this.props.onUpdate(this.state.temp);
-                        this.setState({
-                            error: ''
-                        })
-                    } catch (err) {
-                        this.setState({
-                            error: `Parse Error: ${err.message}`,
-                        });
-                    }
-                }}>Update</button>
+                <button onClick={this.onClick}>Update</button>
             </div>
         );
+    }
+
+    private onClick = () => {
+        try {
+            read(this.state.temp);
+            this.props.onUpdate(this.state.temp);
+            this.setState({
+                error: ''
+            })
+        } catch (err) {
+            this.setState({
+                error: `Parse Error: ${err.message}`,
+            });
+        }
     }
 }
 
