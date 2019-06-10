@@ -7,8 +7,8 @@ import { GraphInput } from './components/GraphInput';
 import { GraphvizOptions } from 'd3-graphviz';
 
 const defaults: GraphvizOptions = {
-  height: 500,
-  width: 500,
+  height: 550,
+  width: 950,
   fit: true,
   zoom: false,
   scale: 1,
