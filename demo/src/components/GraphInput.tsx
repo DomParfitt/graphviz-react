@@ -1,5 +1,6 @@
 import React from "react";
 import { read } from 'graphlib-dot';
+import { examples } from "../examples/examples";
 
 export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
 
@@ -14,10 +15,20 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
   }
 
   public render() {
+    const options: JSX.Element[] = [];
+    options.push(
+      <option key='0' value=''>--- Examples ---</option>
+    );
+    Object.entries(examples).forEach(([key, value], index) => {
+      options.push(
+        <option key={index+1} value={value}>{key}</option>
+      );
+    });
     return (
       <div className="graph-input">
         <textarea defaultValue={this.state.dot} onChange={this.onChange} />
         <div style={{ color: 'red' }}>{this.state.error}</div>
+        <select onChange={this.selectExample}>{options}</select>
         <label>Auto-update?</label>
         <input type='checkbox' onChange={
           (event) => {
@@ -27,6 +38,12 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
         <button onClick={this.onClick}>Update</button>
       </div>
     );
+  }
+
+  private selectExample = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (event.target.value) {
+      this.updateGraph(event.target.value);
+    }
   }
 
   private onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
