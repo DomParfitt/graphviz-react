@@ -21,7 +21,9 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     );
     Object.entries(examples).forEach(([key, value], index) => {
       options.push(
-        <option key={index+1} value={value}>{key}</option>
+        <option key={index + 1} value={value}>
+          {key.split('_').map((key) => key.charAt(0).toUpperCase() + key.slice(1)).join(' ')}
+        </option>
       );
     });
     return (
