@@ -1,6 +1,7 @@
 import React from "react";
 import { read } from 'graphlib-dot';
 import { examples } from "../examples/examples";
+import { Button, Form, FormGroup, FormControl, FormLabel, FormCheck, Row, Col } from "react-bootstrap";
 
 export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
 
@@ -30,34 +31,50 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
       );
     });
     return (
-      <div className="graph-input">
-        <textarea value={this.state.dot} onChange={this.onChange} />
-        <div style={{ color: 'red' }}>{this.state.error}</div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <select onChange={this.selectExample}>{options}</select>
-              </td>
-              <td>
-                <label>Auto-update?</label>
-                <input type='checkbox' onChange={
-                  (event) => {
-                    this.setState({ autoUpdate: event.target.checked });
-                  }
-                } />
-              </td>
-              <td>
-                <button onClick={this.onClick}>Update</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Form>
+        <FormGroup>
+          <Row>
+            <FormControl
+              size='sm'
+              as='textarea'
+              value={this.state.dot}
+              onChange={this.onChange}
+            />
+            <div style={{ color: 'red' }}>{this.state.error}</div>
+          </Row>
+          <Row>
+            <Col>
+              <FormControl
+                size='sm'
+                as="select"
+                onChange={this.selectExample}>
+                {options}
+              </FormControl>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <FormLabel>Auto-update?</FormLabel>
+            </Col>
+            <Col>
+              <FormCheck onChange={
+                (event: any) => {
+                  this.setState({ autoUpdate: event.target.checked });
+                }
+              } />
+            </Col>
+            <Col>
+              <Button
+                variant='dark'
+                onClick={this.onClick}>Update</Button>
+            </Col>
+          </Row>
+        </FormGroup>
+      </Form>
     );
   }
 
-  private selectExample = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  private selectExample = (event: any) => {
     const dot = event.target.value;
     if (dot) {
       this.setState({ dot });

@@ -1,15 +1,20 @@
 import React from "react";
+import { FormControl, FormCheck, FormGroup, FormLabel, Row, Col } from "react-bootstrap";
 
 export class Option extends React.Component<OptionProps, any> {
 
   public render() {
     return (
-      <tr className="option">
-        <td className="option-name">{this.props.name}</td>
-        <td className="option-value">
-          {this.getInputElement()}
-        </td>
-      </tr>
+      <FormGroup>
+        <Row>
+          <Col>
+            <FormLabel>{this.props.name}</FormLabel>
+          </Col>
+          <Col>
+            {this.getInputElement()}
+          </Col>
+        </Row>
+      </FormGroup>
     );
   }
 
@@ -17,22 +22,24 @@ export class Option extends React.Component<OptionProps, any> {
     switch (this.props.type) {
       case 'boolean':
         return (
-          <input
-            type={'checkbox'}
+          <FormCheck
             defaultChecked={this.props.default}
             onChange={
-              (event) => this.props.onOptionUpdate(this.props.name, event.target.checked)
-            } />
+              (event: any) => this.props.onOptionUpdate(this.props.name, event.target.checked)
+            }
+          />
         );
       case 'number':
       case 'input':
         return (
-          <input
+          <FormControl
+            size='sm'
             type={this.props.type}
             defaultValue={this.props.default}
             onChange={
-              (event) => this.props.onOptionUpdate(this.props.name, event.target.value)
-            } />
+              (event: any) => this.props.onOptionUpdate(this.props.name, event.target.value)
+            }
+          />
         );
       case 'list':
         const opts: JSX.Element[] = [];
@@ -42,11 +49,13 @@ export class Option extends React.Component<OptionProps, any> {
           );
         });
         return (
-          <select
+          <FormControl
+            size='sm'
+            as="select"
             defaultValue={this.props.default}
-            onChange={(event) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
+            onChange={(event: any) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
             {opts}
-          </select>
+          </FormControl>
         );
       default:
         return <div />
@@ -55,6 +64,7 @@ export class Option extends React.Component<OptionProps, any> {
 }
 
 export interface OptionProps {
+  index: number,
   name: string,
   type: 'boolean' | 'number' | 'input' | 'list' | 'range',
   values?: string[],

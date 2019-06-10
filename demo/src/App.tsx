@@ -1,14 +1,15 @@
 import React from 'react';
-import './App.css'
+// import './App.css'
 
 import { Graphviz } from 'graphviz-react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 import { GraphvizOptions } from 'd3-graphviz';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const defaults: GraphvizOptions = {
   height: 550,
-  width: 950,
+  width: 550,
   fit: true,
   zoom: false,
   scale: 1,
@@ -46,24 +47,28 @@ export default class App extends React.Component<any, AppState> {
 
   public render(): JSX.Element {
     return (
-      <div>
-        <h1>Graphviz-React</h1>
-        <table>
-          <tbody>
-            <tr>
-              <td>
+      <Container>
+        <Row>
+          <Col>
+            <h1>Graphviz-React</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Container>
+              <Row>
                 <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
+              </Row>
+              <Row>
                 <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
-              </td>
-              <td>
-                <div className="graphviz">
-                  <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </Row>
+            </Container>
+          </Col>
+          <Col>
+            <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 

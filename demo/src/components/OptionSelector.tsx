@@ -1,5 +1,7 @@
 import React from "react";
 import { Option } from "./Option";
+import { Table, FormGroup } from "react-bootstrap";
+import Form from "react-bootstrap/FormGroup";
 
 export class OptionsSelector extends React.Component<OptionsSelectorProps, any> {
 
@@ -9,6 +11,7 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
 
       items.push(
         <Option
+          index={index}
           key={index}
           name={option.name}
           type={option.type}
@@ -19,11 +22,14 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
     });
 
     return (
-      <table className="options-selector">
-        <tbody>
-          {items}
-        </tbody>
-      </table>
+      <Table bordered size='sm'
+        className="options-selector">
+        <Form>
+          <FormGroup>
+            {items}
+          </FormGroup>
+        </Form>
+      </Table>
     );
   }
 }
