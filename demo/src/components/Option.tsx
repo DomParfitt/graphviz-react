@@ -19,7 +19,7 @@ export class Option extends React.Component<OptionProps, any> {
         return (
           <input
             type={'checkbox'}
-            checked={this.props.default}
+            defaultChecked={this.props.default}
             onChange={
               (event) => this.props.onOptionUpdate(this.props.name, event.target.checked)
             } />
