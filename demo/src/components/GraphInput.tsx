@@ -33,14 +33,26 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
       <div className="graph-input">
         <textarea value={this.state.dot} onChange={this.onChange} />
         <div style={{ color: 'red' }}>{this.state.error}</div>
-        <select onChange={this.selectExample}>{options}</select>
-        <label>Auto-update?</label>
-        <input type='checkbox' onChange={
-          (event) => {
-            this.setState({ autoUpdate: event.target.checked });
-          }
-        } />
-        <button onClick={this.onClick}>Update</button>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <select onChange={this.selectExample}>{options}</select>
+              </td>
+              <td>
+                <label>Auto-update?</label>
+                <input type='checkbox' onChange={
+                  (event) => {
+                    this.setState({ autoUpdate: event.target.checked });
+                  }
+                } />
+              </td>
+              <td>
+                <button onClick={this.onClick}>Update</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
