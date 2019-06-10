@@ -8,9 +8,8 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     super(props);
     this.state = {
       autoUpdate: false,
-      dot: this.props.initial || '',
+      dot: this.props.dot || '',
       error: '',
-      temp: this.props.initial || '',
     }
   }
 
@@ -22,13 +21,17 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     Object.entries(examples).forEach(([key, value], index) => {
       options.push(
         <option key={index + 1} value={value}>
-          {key.split('_').map((key) => key.charAt(0).toUpperCase() + key.slice(1)).join(' ')}
+          {
+            key.split('_')
+              .map((key) => key.charAt(0).toUpperCase() + key.slice(1))
+              .join(' ')
+          }
         </option>
       );
     });
     return (
       <div className="graph-input">
-        <textarea defaultValue={this.state.dot} onChange={this.onChange} />
+        <textarea value={this.state.dot} onChange={this.onChange} />
         <div style={{ color: 'red' }}>{this.state.error}</div>
         <select onChange={this.selectExample}>{options}</select>
         <label>Auto-update?</label>
@@ -43,20 +46,23 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
   }
 
   private selectExample = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value) {
-      this.updateGraph(event.target.value);
+    const dot = event.target.value;
+    if (dot) {
+      this.setState({ dot });
+      this.updateGraph(dot);
     }
   }
 
   private onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    this.setState({ temp: event.target.value });
+    const dot = event.target.value;
+    this.setState({ dot });
     if (this.state.autoUpdate) {
-      this.updateGraph(event.target.value);
+      this.updateGraph(dot);
     }
   }
 
   private onClick = () => {
-    this.updateGraph(this.state.temp);
+    this.updateGraph(this.state.dot);
   }
 
   private updateGraph = (dot: string) => {
@@ -78,10 +84,9 @@ interface GraphInputState {
   autoUpdate: boolean,
   dot: string,
   error: string,
-  temp: string,
 }
 
 export interface GraphInputProps {
-  initial?: string,
+  dot?: string,
   onUpdate: (dot: string) => void,
 }

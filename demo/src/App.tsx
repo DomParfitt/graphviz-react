@@ -52,7 +52,7 @@ export default class App extends React.Component<any, AppState> {
           <tbody>
             <tr>
               <td>
-                <GraphInput initial={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
+                <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
                 <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
               </td>
               <td>
