@@ -1,20 +1,18 @@
 import React from "react";
-import { FormControl, FormCheck, FormGroup, FormLabel, Row, Col } from "react-bootstrap";
+import { FormControl, FormCheck, FormLabel, Row, Col } from "react-bootstrap";
 
 export class Option extends React.Component<OptionProps, any> {
 
   public render() {
     return (
-      <FormGroup>
-        <Row>
-          <Col>
-            <FormLabel>{this.props.name}</FormLabel>
-          </Col>
-          <Col>
-            {this.getInputElement()}
-          </Col>
-        </Row>
-      </FormGroup>
+      <Row>
+        <Col >
+          <FormLabel>{this.props.name}</FormLabel>
+        </Col>
+        <Col>
+          {this.getInputElement()}
+        </Col>
+      </Row>
     );
   }
 
