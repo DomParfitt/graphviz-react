@@ -1,7 +1,7 @@
 import React from "react";
 import { read } from 'graphlib-dot';
 import { examples } from "../examples/examples";
-import { Button, Form, FormGroup, FormControl, FormLabel, FormCheck, Row, Col } from "react-bootstrap";
+import { Button, Form, FormGroup, FormControl, FormLabel, FormCheck, Row, Container } from "react-bootstrap";
 
 export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
 
@@ -33,42 +33,39 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     return (
       <Form>
         <FormGroup>
-          <Row>
-            <FormControl
-              size='sm'
-              as='textarea'
-              value={this.state.dot}
-              onChange={this.onChange}
-            />
-            <div style={{ color: 'red' }}>{this.state.error}</div>
-          </Row>
-          <Row>
-            <Col>
+          <Container fluid={true}>
+            <Row>
+              <FormControl
+                rows="10"
+                size='sm'
+                as='textarea'
+                value={this.state.dot}
+                onChange={this.onChange}
+              />
+              <div style={{ color: 'red' }}>{this.state.error}</div>
+            </Row>
+            <Row>
               <FormControl
                 size='sm'
                 as="select"
                 onChange={this.selectExample}>
                 {options}
               </FormControl>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <FormLabel>Auto-update?</FormLabel>
-            </Col>
-            <Col>
+            </Row>
+            <Row>
+              <FormLabel>Auto-update? &nbsp;</FormLabel>
               <FormCheck onChange={
                 (event: any) => {
                   this.setState({ autoUpdate: event.target.checked });
                 }
               } />
-            </Col>
-            <Col>
+            </Row>
+            <Row>
               <Button
                 variant='dark'
                 onClick={this.onClick}>Update</Button>
-            </Col>
-          </Row>
+            </Row>
+          </Container>
         </FormGroup>
       </Form>
     );
