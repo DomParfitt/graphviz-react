@@ -1,7 +1,6 @@
 import React from "react";
 import { Option } from "./Option";
-import { Table, FormGroup } from "react-bootstrap";
-import Form from "react-bootstrap/FormGroup";
+import { Table } from "react-bootstrap";
 
 export class OptionsSelector extends React.Component<OptionsSelectorProps, any> {
 
@@ -10,25 +9,25 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
     this.props.options.forEach((option, index) => {
 
       items.push(
-        <Option
-          index={index}
-          key={index}
-          name={option.name}
-          type={option.type}
-          values={option.values}
-          default={option.default}
-          onOptionUpdate={this.props.onOptionUpdate} />
+        <tr>
+          <Option
+            index={index}
+            key={index}
+            name={option.name}
+            type={option.type}
+            values={option.values}
+            default={option.default}
+            onOptionUpdate={this.props.onOptionUpdate} />
+        </tr>
       );
     });
 
     return (
-      <Table bordered size='sm'
+      <Table bordered striped size='sm'
         className="options-selector">
-        <Form>
-          <FormGroup>
-            {items}
-          </FormGroup>
-        </Form>
+        <tbody>
+          {items}
+        </tbody>
       </Table>
     );
   }
