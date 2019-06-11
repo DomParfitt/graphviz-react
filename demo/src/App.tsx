@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css'
+import './App.css'
 
 import { Graphviz } from 'graphviz-react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
@@ -47,24 +47,18 @@ export default class App extends React.Component<any, AppState> {
 
   public render(): JSX.Element {
     return (
-      <Container>
+      <Container fluid={true}>
         <Row>
           <Col>
             <h1>Graphviz-React</h1>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Container>
-              <Row>
-                <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
-              </Row>
-              <Row>
-                <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
-              </Row>
-            </Container>
+          <Col >
+            <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
+            <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
           </Col>
-          <Col>
+          <Col sm={9}>
             <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
           </Col>
         </Row>
