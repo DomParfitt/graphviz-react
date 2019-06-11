@@ -7,7 +7,11 @@ export class Option extends React.Component<OptionProps, any> {
     return (
       <Row>
         <Col >
-          <FormLabel>{this.props.name}</FormLabel>
+          <FormLabel>{
+            this.props.name
+              .replace(/([A-Z])/g, ' $1')
+              .replace(/^./, (str) => str.toUpperCase())
+          }</FormLabel>
         </Col>
         <Col>
           {this.getInputElement()}
