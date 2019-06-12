@@ -39,7 +39,6 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
       <Container fluid={true}>
         <Row>
           <TextArea
-            rows={10}
             value={this.state.dot}
             onChange={this.onChange}
           />
