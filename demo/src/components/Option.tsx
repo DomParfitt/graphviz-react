@@ -1,22 +1,26 @@
 import React from "react";
-import { FormControl, FormCheck, FormLabel, Row, Col } from "react-bootstrap";
+import { Label } from "./styled/Label";
+import { Input } from "./styled/Input";
+import { Select } from "./styled/Select";
+import { TableRow } from "./styled/TableRow";
+import { TableData } from "./styled/TableData";
 
 export class Option extends React.Component<OptionProps, any> {
 
   public render() {
     return (
-      <Row>
-        <Col >
-          <FormLabel>{
+      <TableRow>
+        <TableData>
+          <Label>{
             this.props.name
               .replace(/([A-Z])/g, ' $1')
               .replace(/^./, (str) => str.toUpperCase())
-          }</FormLabel>
-        </Col>
-        <Col>
+          }</Label>
+        </TableData>
+        <TableData>
           {this.getInputElement()}
-        </Col>
-      </Row>
+        </TableData>
+      </TableRow>
     );
   }
 
@@ -24,7 +28,8 @@ export class Option extends React.Component<OptionProps, any> {
     switch (this.props.type) {
       case 'boolean':
         return (
-          <FormCheck
+          <Input
+            type="checkbox"
             defaultChecked={this.props.default}
             onChange={
               (event: any) => this.props.onOptionUpdate(this.props.name, event.target.checked)
@@ -34,8 +39,7 @@ export class Option extends React.Component<OptionProps, any> {
       case 'number':
       case 'input':
         return (
-          <FormControl
-            size='sm'
+          <Input
             type={this.props.type}
             defaultValue={this.props.default}
             onChange={
@@ -51,13 +55,11 @@ export class Option extends React.Component<OptionProps, any> {
           );
         });
         return (
-          <FormControl
-            size='sm'
-            as="select"
+          <Select
             defaultValue={this.props.default}
             onChange={(event: any) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
             {opts}
-          </FormControl>
+          </Select>
         );
       default:
         return <div />

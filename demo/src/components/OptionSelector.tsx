@@ -11,16 +11,14 @@ export class OptionsSelector extends React.Component<OptionsSelectorProps, any> 
     this.props.options.forEach((option, index) => {
 
       items.push(
-        <TableRow>
-          <Option
-            index={index}
-            key={index}
-            name={option.name}
-            type={option.type}
-            values={option.values}
-            default={option.default}
-            onOptionUpdate={this.props.onOptionUpdate} />
-        </TableRow>
+        <Option
+          index={index}
+          key={index}
+          name={option.name}
+          type={option.type}
+          values={option.values}
+          default={option.default}
+          onOptionUpdate={this.props.onOptionUpdate} />
       );
     });
 

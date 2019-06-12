@@ -1,7 +1,12 @@
 import React from "react";
 import { read } from 'graphlib-dot';
 import { examples } from "../examples/examples";
-import { Button, Form, FormGroup, FormControl, FormLabel, FormCheck, Row, Container } from "react-bootstrap";
+import { Row, Container } from "react-bootstrap";
+import { TextArea } from "./styled/TextArea";
+import { Select } from "./styled/Select";
+import { Input } from "./styled/Input";
+import { Button } from "./styled/Button";
+import { Label } from "./styled/Label";
 
 export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
 
@@ -31,43 +36,36 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
       );
     });
     return (
-      <Form>
-        <FormGroup>
-          <Container fluid={true}>
-            <Row>
-              <FormControl
-                rows="10"
-                size='sm'
-                as='textarea'
-                value={this.state.dot}
-                onChange={this.onChange}
-              />
-              <div style={{ color: 'red' }}>{this.state.error}</div>
-            </Row>
-            <Row>
-              <FormControl
-                size='sm'
-                as="select"
-                onChange={this.selectExample}>
-                {options}
-              </FormControl>
-            </Row>
-            <Row>
-              <FormLabel>Auto-update? &nbsp;</FormLabel>
-              <FormCheck onChange={
-                (event: any) => {
-                  this.setState({ autoUpdate: event.target.checked });
-                }
-              } />
-            </Row>
-            <Row>
-              <Button
-                variant='dark'
-                onClick={this.onClick}>Update</Button>
-            </Row>
-          </Container>
-        </FormGroup>
-      </Form>
+      <Container fluid={true}>
+        <Row>
+          <TextArea
+            rows={10}
+            value={this.state.dot}
+            onChange={this.onChange}
+          />
+          <div style={{ color: 'red' }}>{this.state.error}</div>
+        </Row>
+        <Row>
+          <Select onChange={this.selectExample}>
+            {options}
+          </Select>
+        </Row>
+        <Row>
+          <Label>Auto-update? &nbsp;</Label>
+          <Input
+            type="checkbox"
+            onChange={
+              (event: any) => {
+                this.setState({ autoUpdate: event.target.checked });
+              }
+            }
+          />
+        </Row>
+        <Row>
+          <Button
+            onClick={this.onClick}>Update</Button>
+        </Row>
+      </Container>
     );
   }
 

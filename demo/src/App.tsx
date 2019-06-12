@@ -6,6 +6,7 @@ import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 import { GraphvizOptions } from 'd3-graphviz';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Title } from './components/styled/Title';
 
 const defaults: GraphvizOptions = {
   height: 550,
@@ -50,7 +51,7 @@ export default class App extends React.Component<any, AppState> {
       <Container fluid={true}>
         <Row>
           <Col>
-            <h1>Graphviz-React</h1>
+            <Title>Graphviz-React</Title>
           </Col>
         </Row>
         <Row>
