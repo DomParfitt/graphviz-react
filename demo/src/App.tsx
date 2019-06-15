@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css'
 
-import { Graphviz } from 'graphviz-react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 import { GraphvizOptions } from 'd3-graphviz';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Title } from './components/styled/Title';
+import { StyledContainer } from './components/styled/Container';
+import { StyledGraphviz } from './components/styled/Graphviz';
 
 const defaults: GraphvizOptions = {
   height: 550,
@@ -21,7 +21,6 @@ const defaults: GraphvizOptions = {
 const options: IOption[] = [
   { name: 'useWorker', type: 'boolean' },
   { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'], default: defaults.engine },
-  // { name: 'totalMemory', type: 'number' },
   { name: 'keyMode', type: 'list', values: ['title', 'id', 'tag-index', 'index'] },
   { name: 'fade', type: 'boolean' },
   { name: 'tweenPaths', type: 'boolean' },
@@ -48,22 +47,22 @@ export default class App extends React.Component<any, AppState> {
 
   public render(): JSX.Element {
     return (
-      <Container fluid={true}>
-        <Row>
-          <Col>
+        <StyledContainer fluid={true}>
+          <Row>
             <Title>Graphviz-React</Title>
-          </Col>
-        </Row>
-        <Row>
-          <Col >
-            <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
-            <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
-          </Col>
-          <Col sm={9}>
-            <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
-          </Col>
-        </Row>
-      </Container>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
+            </Col>
+            <Col>
+              <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
+            </Col>
+            <Col>
+              <StyledGraphviz dot={this.state.dot} options={this.state.graphOptions} />
+            </Col>
+          </Row>
+        </StyledContainer>
     );
   }
 
