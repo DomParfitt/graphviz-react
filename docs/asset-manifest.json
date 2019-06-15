@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.69eda509.chunk.css",
-    "main.js": "/static/js/main.e11e230c.chunk.js",
-    "main.js.map": "/static/js/main.e11e230c.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.6c194476.chunk.js": "/static/js/2.6c194476.chunk.js",
-    "static/js/2.6c194476.chunk.js.map": "/static/js/2.6c194476.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.36904f42b738ed91a00b4f7cf5b69eee.js": "/precache-manifest.36904f42b738ed91a00b4f7cf5b69eee.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.69eda509.chunk.css.map": "/static/css/main.69eda509.chunk.css.map"
+    "main.css": "/graphviz-react/static/css/main.69eda509.chunk.css",
+    "main.js": "/graphviz-react/static/js/main.e11e230c.chunk.js",
+    "main.js.map": "/graphviz-react/static/js/main.e11e230c.chunk.js.map",
+    "runtime~main.js": "/graphviz-react/static/js/runtime~main.c0855e04.js",
+    "runtime~main.js.map": "/graphviz-react/static/js/runtime~main.c0855e04.js.map",
+    "static/js/2.f68ba4bb.chunk.js": "/graphviz-react/static/js/2.f68ba4bb.chunk.js",
+    "static/js/2.f68ba4bb.chunk.js.map": "/graphviz-react/static/js/2.f68ba4bb.chunk.js.map",
+    "index.html": "/graphviz-react/index.html",
+    "precache-manifest.08ac643e01e3f533f47664dc11f1f1dd.js": "/graphviz-react/precache-manifest.08ac643e01e3f533f47664dc11f1f1dd.js",
+    "service-worker.js": "/graphviz-react/service-worker.js",
+    "static/css/main.69eda509.chunk.css.map": "/graphviz-react/static/css/main.69eda509.chunk.css.map"
   }
 }
