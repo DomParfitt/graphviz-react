@@ -47,10 +47,9 @@ export default class App extends React.Component<any, AppState> {
 
   public render(): JSX.Element {
     return (
+      <div>
+        <Title>Graphviz-React</Title>
         <StyledContainer fluid={true}>
-          <Row>
-            <Title>Graphviz-React</Title>
-          </Row>
           <Row>
             <Col sm={2}>
               <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
@@ -63,6 +62,7 @@ export default class App extends React.Component<any, AppState> {
             </Col>
           </Row>
         </StyledContainer>
+      </div>
     );
   }
 
