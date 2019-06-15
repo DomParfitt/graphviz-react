@@ -2,6 +2,8 @@
 
 `graphviz-react` provides a simple to use component for rendering Graphviz objects in React. It effectively acts as a React-flavoured wrapper over the [d3-graphviz](https://www.npmjs.com/package/d3-graphviz) library, providing a uniform way to use the renderer. `graphviz-react` is written in Typescript and provides typing declarations.
 
+A demo of this component can be found [here.](https://domparfitt.com/graphviz-react)
+
 ## Install
 
 From the root directory of your React project run the following command.
