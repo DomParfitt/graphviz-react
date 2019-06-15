@@ -1,0 +1,18 @@
+h1 {
+  text-align: center
+}
+
+table {
+  width: 100%;
+  border: 1px solid black;
+}
+
+textarea {
+  width: 99%;
+  height: 150px;
+  resize: none
+}
+
+.graphviz {
+  text-align: center
+}
