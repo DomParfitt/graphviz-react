@@ -21,7 +21,7 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
 
     public render(): JSX.Element {
         return (
-            <div id={this.id} />
+            <div id={this.id} className={this.props.className}/>
         );
     }
 
@@ -57,4 +57,5 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
     dot: string,
     options?: GraphvizOptions,
+    className?: string,
 }

@@ -14,4 +14,5 @@ export declare class Graphviz extends React.Component<IGraphvizProps, any> {
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
     dot: string;
     options?: GraphvizOptions;
+    className?: string;
 }
