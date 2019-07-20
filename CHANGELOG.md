@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Added
 - Link to demo in README
+- Note in README regarding `react-scripts` heap issue
 
 ## [1.0.4]
 ### Added
