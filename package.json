@@ -5,7 +5,11 @@
   "main": "./lib/Graphviz.js",
   "types": "./lib/Graphviz.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "clean-build": "npm run clean && npm run build",
+    "prepublish": "npm run clean-build"
   },
   "keywords": [
     "React",
@@ -22,14 +26,14 @@
     "lib/*"
   ],
   "dependencies": {
-    "d3-graphviz": "^2.6.0",
-    "react": "^16.6.0"
+    "d3-graphviz": "^2.6.1",
+    "react": "^16.13.1"
   },
   "devDependencies": {
-    "@types/d3-graphviz": "^2.6.1",
-    "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.9",
-    "react-dom": "^16.6.0",
-    "typescript": "^3.1.3"
+    "@types/d3-graphviz": "^2.6.3",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.9.5"
   }
 }
