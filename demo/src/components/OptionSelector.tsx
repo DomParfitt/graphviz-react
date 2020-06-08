@@ -2,7 +2,6 @@ import React from "react";
 import { Option } from "./Option";
 import { Table } from "./styled/Table";
 import { TableBody } from "./styled/TableBody";
-import { TableRow } from "./styled/TableRow";
 
 export class OptionsSelector extends React.Component<OptionsSelectorProps, any> {
 
