@@ -22,7 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "react-scripts build",
+    "predeploy": "GENERATE_SOURCEMAP=false npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
