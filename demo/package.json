@@ -8,8 +8,7 @@
     "graphviz-react": "file:..",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
-    "react-dom": "^16.13.1",
-    "styled-components": "^4.4.1"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@types/d3-graphviz": "^2.6.3",
@@ -17,7 +16,6 @@
     "@types/node": "12.0.7",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
-    "@types/styled-components": "^4.4.3",
     "gh-pages": "^2.2.0",
     "react-scripts": "^3.4.1",
     "typescript": "3.5.1"

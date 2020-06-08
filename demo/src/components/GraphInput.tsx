@@ -2,11 +2,6 @@ import React from "react";
 import { read } from 'graphlib-dot';
 import { examples } from "../examples/examples";
 import { Row, Container } from "react-bootstrap";
-import { TextArea } from "./styled/TextArea";
-import { Select } from "./styled/Select";
-import { Input } from "./styled/Input";
-import { Button } from "./styled/Button";
-import { Label } from "./styled/Label";
 
 export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
 
@@ -38,20 +33,21 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
     return (
       <Container fluid={true}>
         <Row>
-          <TextArea
+          <textarea
+            rows={15}
             value={this.state.dot}
             onChange={this.onChange}
           />
           <div style={{ color: 'red' }}>{this.state.error}</div>
         </Row>
         <Row>
-          <Select onChange={this.selectExample}>
+          <select onChange={this.selectExample}>
             {options}
-          </Select>
+          </select>
         </Row>
         <Row>
-          <Label>Auto-update? &nbsp;</Label>
-          <Input
+          <label>Auto-update? &nbsp;</label>
+          <input
             type="checkbox"
             onChange={
               (event: any) => {
@@ -61,8 +57,8 @@ export class GraphInput extends React.Component<GraphInputProps, GraphInputState
           />
         </Row>
         <Row>
-          <Button
-            onClick={this.onClick}>Update</Button>
+          <button
+            onClick={this.onClick}>Update</button>
         </Row>
       </Container>
     );
