@@ -1,34 +1,29 @@
 import React from "react";
-import { Label } from "./styled/Label";
-import { Input } from "./styled/Input";
-import { Select } from "./styled/Select";
-import { TableRow } from "./styled/TableRow";
-import { TableData } from "./styled/TableData";
 
 export class Option extends React.Component<OptionProps, any> {
 
   public render() {
     return (
-      <TableRow>
-        <TableData>
-          <Label>{
+      <tr>
+        <td>
+          <label>{
             this.props.name
               .replace(/([A-Z])/g, ' $1')
               .replace(/^./, (str) => str.toUpperCase())
-          }</Label>
-        </TableData>
-        <TableData>
-          {this.getInputElement()}
-        </TableData>
-      </TableRow>
+          }</label>
+        </td>
+        <td>
+          {this.getinputElement()}
+        </td>
+      </tr>
     );
   }
 
-  private getInputElement = () => {
+  private getinputElement = () => {
     switch (this.props.type) {
       case 'boolean':
         return (
-          <Input
+          <input
             type="checkbox"
             defaultChecked={this.props.default}
             onChange={
@@ -39,7 +34,7 @@ export class Option extends React.Component<OptionProps, any> {
       case 'number':
       case 'input':
         return (
-          <Input
+          <input
             type={this.props.type}
             defaultValue={this.props.default}
             onChange={
@@ -55,11 +50,11 @@ export class Option extends React.Component<OptionProps, any> {
           );
         });
         return (
-          <Select
+          <select
             defaultValue={this.props.default}
             onChange={(event: any) => this.props.onOptionUpdate(this.props.name, event.target.value)}>
             {opts}
-          </Select>
+          </select>
         );
       default:
         return <div />

@@ -1,31 +1,28 @@
 {
   "name": "graphviz-react-demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "https://domparfitt.com/graphviz-react",
   "dependencies": {
-    "gh-pages": "^2.0.1",
-    "graphlib-dot": "^0.6.2",
-    "graphviz-react": "^1.0.3",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.3.1"
+    "graphlib-dot": "^0.6.4",
+    "graphviz-react": "file:..",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/d3-graphviz": "^2.6.2",
+    "@types/d3-graphviz": "^2.6.3",
     "@types/graphlib-dot": "^0.6.1",
-    "@types/jest": "24.0.13",
     "@types/node": "12.0.7",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
-    "@types/styled-components": "^4.1.16",
-    "react-scripts": "3.0.1",
+    "gh-pages": "^2.2.0",
+    "react-scripts": "^3.4.1",
     "typescript": "3.5.1"
   },
   "scripts": {
-    "start": "react-scripts --max_old_space_size=4096 start",
-    "predeploy": "react-scripts --max_old_space_size=4096 build",
+    "start": "react-scripts start",
+    "predeploy": "GENERATE_SOURCEMAP=false react-scripts build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -3,10 +3,8 @@ import React from 'react';
 import { OptionsSelector, IOption } from './components/OptionSelector';
 import { GraphInput } from './components/GraphInput';
 import { GraphvizOptions } from 'd3-graphviz';
-import { Row, Col } from 'react-bootstrap';
-import { Title } from './components/styled/Title';
-import { StyledContainer } from './components/styled/Container';
-import { StyledGraphviz } from './components/styled/Graphviz';
+import { Row, Col, Container } from 'react-bootstrap';
+import { Graphviz } from 'graphviz-react';
 
 const defaults: GraphvizOptions = {
   height: 550,
@@ -48,8 +46,8 @@ export default class App extends React.Component<any, AppState> {
   public render(): JSX.Element {
     return (
       <div>
-        <Title>Graphviz-React</Title>
-        <StyledContainer fluid={true}>
+        <h1 style={{ textAlign: "center" }}>Graphviz-React</h1>
+        <Container fluid={true}>
           <Row>
             <Col sm={2}>
               <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
@@ -58,10 +56,10 @@ export default class App extends React.Component<any, AppState> {
               <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
             </Col>
             <Col>
-              <StyledGraphviz dot={this.state.dot} options={this.state.graphOptions} />
+              <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
             </Col>
           </Row>
-        </StyledContainer>
+        </Container>
       </div>
     );
   }

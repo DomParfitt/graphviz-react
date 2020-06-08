@@ -1,25 +1,25 @@
 {
-    "compilerOptions": {
-      "outDir": "./lib",
-      "target": "es5",
-      "module": "esnext",
-      "noImplicitAny": true,
-      "strictNullChecks": true,
-      "suppressImplicitAnyIndexErrors": true,
-      "removeComments": true,
-      "declaration": true,
-      "sourceMap": true,
-      "jsx": "react",
-      "typeRoots": [
-        "index.d.ts",
-        "node_modules/@types"
-      ]
-    },
-    "include": [
-      "./src/**/*.tsx",
-      "./src/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules"
+  "compilerOptions": {
+    "outDir": "./lib",
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": true,
+    "declaration": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "typeRoots": [
+      "index.d.ts",
+      "node_modules/@types"
     ]
-  }
+  },
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
