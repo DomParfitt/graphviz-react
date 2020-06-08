@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/graphviz-react/static/css/main.1359096b.chunk.css",
-    "main.js": "/graphviz-react/static/js/main.e94638df.chunk.js",
+    "main.js": "/graphviz-react/static/js/main.53920486.chunk.js",
     "runtime-main.js": "/graphviz-react/static/js/runtime-main.c05c5246.js",
-    "static/js/2.9ec5d3be.chunk.js": "/graphviz-react/static/js/2.9ec5d3be.chunk.js",
+    "static/js/2.1cb67509.chunk.js": "/graphviz-react/static/js/2.1cb67509.chunk.js",
     "index.html": "/graphviz-react/index.html",
-    "precache-manifest.64309613ae4bb3ac60124833eca6af3e.js": "/graphviz-react/precache-manifest.64309613ae4bb3ac60124833eca6af3e.js",
+    "precache-manifest.2963597b2824d1fa71a917e595599846.js": "/graphviz-react/precache-manifest.2963597b2824d1fa71a917e595599846.js",
     "service-worker.js": "/graphviz-react/service-worker.js",
-    "static/js/2.9ec5d3be.chunk.js.LICENSE.txt": "/graphviz-react/static/js/2.9ec5d3be.chunk.js.LICENSE.txt"
+    "static/js/2.1cb67509.chunk.js.LICENSE.txt": "/graphviz-react/static/js/2.1cb67509.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c05c5246.js",
-    "static/js/2.9ec5d3be.chunk.js",
+    "static/js/2.1cb67509.chunk.js",
     "static/css/main.1359096b.chunk.css",
-    "static/js/main.e94638df.chunk.js"
+    "static/js/main.53920486.chunk.js"
   ]
 }
