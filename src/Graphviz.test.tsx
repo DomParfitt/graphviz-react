@@ -14,9 +14,4 @@ describe('<Graphviz />', () => {
     const tree = render(<Graphviz dot={'graph { a -- b }'} />);
     expect(tree).toMatchSnapshot();
   });
-
-  it('matches expected snapshot 2', () => {
-    const tree = render(<Graphviz dot={'graph { a -- b -- c }'} />);
-    expect(tree).toMatchSnapshot();
-  });
 });
