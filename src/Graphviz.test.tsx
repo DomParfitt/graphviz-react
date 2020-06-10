@@ -3,7 +3,7 @@ import { Graphviz } from './Graphviz';
 import { render } from '@testing-library/react';
 
 beforeAll(() => {
-  // Mock out the `getTotalLength` method for SVG as this is not currently implemented by JSOM.
+  // Mock out the `getTotalLength` method for SVG as this is not currently implemented by JSDOM.
   // See: https://github.com/jsdom/jsdom/issues/1330 & https://github.com/jsdom/jsdom/issues/1423
   // @ts-ignore
   SVGElement.prototype.getTotalLength = jest.fn();
@@ -12,8 +12,6 @@ beforeAll(() => {
 describe('<Graphviz />', () => {
   it('matches expected snapshot', () => {
     const tree = render(<Graphviz dot={'graph { a -- b }'} />);
-    const element = tree.getByTestId('graphviz0');
-    console.log(element);
     expect(tree).toMatchSnapshot();
   });
 
