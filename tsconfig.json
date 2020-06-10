@@ -15,12 +15,8 @@
       "node_modules/@types"
     ]
   },
-  "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ],
   "exclude": [
-    "node_modules",
-    "**/__tests__/**"
+    "demo/**",
+    "src/**/*.test.tsx"
   ]
 }
