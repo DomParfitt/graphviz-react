@@ -19,30 +19,40 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
     Graphviz.count++;
   }
 
-  public render(): JSX.Element {
+  public render = (): JSX.Element => {
     return (
-      <div>
-        <script src="https://unpkg.com/@hpcc-js/wasm/dist/index.min.js" type="application/javascript/"></script>
-        <div id={this.id} />
-      </div>
+      // <div>
+      //   <script src="https://unpkg.com/@hpcc-js/wasm/dist/index.min.js" type="application/javascript/"></script>
+      <div id={this.id} />
+      // </div>
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount = () => {
+    this.appendWasmScript();
     this.renderGraph();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate = () => {
     this.renderGraph();
   }
 
-  private renderGraph() {
+  private renderGraph = () => {
     graphviz('#' + this.id)
       .options(this.options())
       .renderDot(this.props.dot);
   }
 
-  private options(): GraphvizOptions {
+  private appendWasmScript = () => {
+    const script = document.createElement("script");
+
+    script.src = "https://unpkg.com/@hpcc-js/wasm/dist/index.min.js";
+    script.type = "application/javascript/"
+
+    document.body.appendChild(script);
+  }
+
+  private options = (): GraphvizOptions => {
     if (!this.props.options) {
       return Graphviz.defaultOptions
     }
