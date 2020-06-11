@@ -5,10 +5,11 @@ export declare class Graphviz extends React.Component<IGraphvizProps, any> {
     private static defaultOptions;
     private id;
     constructor(props: IGraphvizProps);
-    render(): JSX.Element;
-    componentDidMount(): void;
-    componentDidUpdate(): void;
+    render: () => JSX.Element;
+    componentDidMount: () => void;
+    componentDidUpdate: () => void;
     private renderGraph;
+    private appendWasmScript;
     private options;
 }
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
