@@ -19,27 +19,27 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
     Graphviz.count += 1;
   }
 
-  public render(): JSX.Element {
+  public render = (): JSX.Element => {
     return (
       <div id={this.id} />
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount = () => {
     this.renderGraph();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate = () => {
     this.renderGraph();
   }
 
-  private renderGraph() {
+  private renderGraph = () => {
     graphviz(`#${this.id}`)
       .options(this.options())
       .renderDot(this.props.dot);
   }
 
-  private options(): GraphvizOptions {
+  private options = (): GraphvizOptions => {
     if (!this.props.options) {
       return Graphviz.defaultOptions;
     }
