@@ -32,23 +32,13 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
   };
 
   private renderGraph = () => {
-    const { dot } = this.props;
+    const { dot, options } = this.props;
     graphviz(`#${this.id}`)
-      .options(this.options())
+      .options({
+        ...Graphviz.defaultOptions,
+        ...options || {},
+      })
       .renderDot(dot);
-  };
-
-  private options = (): GraphvizOptions => {
-    if (!this.props.options) {
-      return Graphviz.defaultOptions;
-    }
-
-    const options: GraphvizOptions = Graphviz.defaultOptions;
-    for (const option of Object.keys(this.props.options)) {
-      options[option] = this.props.options[option];
-    }
-
-    return options;
   };
 }
 
