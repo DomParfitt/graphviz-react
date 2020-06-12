@@ -8,7 +8,7 @@
     "build": "tsc",
     "clean": "rm -rf lib",
     "clean-build": "npm run clean && npm run build",
-    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.tsx",
+    "lint": "eslint src --ext .ts,.tsx",
     "prepublish": "npm run clean-build",
     "test": "jest"
   },
@@ -36,12 +36,17 @@
     "@types/jest": "^25.2.3",
     "@types/jsdom": "^16.2.3",
     "@types/react": "^16.9.35",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-typescript": "^8.0.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
     "jest": "^26.0.1",
     "jsdom": "^16.2.2",
     "react-dom": "^16.13.1",
     "ts-jest": "^26.1.0",
-    "tslint": "^6.1.2",
-    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.9.5"
   },
   "jest": {
