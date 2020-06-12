@@ -2,8 +2,8 @@ import { graphviz, GraphvizOptions } from 'd3-graphviz';
 import * as React from 'react';
 
 export class Graphviz extends React.Component<IGraphvizProps, any> {
-
   private static count = 0;
+
   private static defaultOptions: GraphvizOptions = {
     fit: true,
     height: 500,
@@ -19,25 +19,24 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
     Graphviz.count += 1;
   }
 
-  public render = (): JSX.Element => {
-    return (
-      <div id={this.id} />
-    );
-  }
+  public render = (): JSX.Element => (
+    <div id={this.id} />
+  );
 
   public componentDidMount = () => {
     this.renderGraph();
-  }
+  };
 
   public componentDidUpdate = () => {
     this.renderGraph();
-  }
+  };
 
   private renderGraph = () => {
+    const { dot } = this.props;
     graphviz(`#${this.id}`)
       .options(this.options())
-      .renderDot(this.props.dot);
-  }
+      .renderDot(dot);
+  };
 
   private options = (): GraphvizOptions => {
     if (!this.props.options) {
@@ -50,8 +49,7 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
     }
 
     return options;
-  }
-
+  };
 }
 
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
