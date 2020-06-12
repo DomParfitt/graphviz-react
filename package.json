@@ -5,11 +5,12 @@
   "main": "./lib/Graphviz.js",
   "types": "./lib/Graphviz.d.ts",
   "scripts": {
-    "test": "jest",
     "build": "tsc",
     "clean": "rm -rf lib",
     "clean-build": "npm run clean && npm run build",
-    "prepublish": "npm run clean-build"
+    "lint": "tslint -c tslint.json src/**/*.tsx",
+    "prepublish": "npm run clean-build",
+    "test": "jest"
   },
   "keywords": [
     "React",
@@ -39,6 +40,8 @@
     "jsdom": "^16.2.2",
     "react-dom": "^16.13.1",
     "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.9.5"
   },
   "jest": {
