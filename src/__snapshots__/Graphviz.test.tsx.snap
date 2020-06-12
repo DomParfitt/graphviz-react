@@ -1,6 +1,308 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Graphviz /> matches expected snapshot 1`] = `
+exports[`<Graphviz /> digraph { a -> b } matches expected baseElement snapshot 1`] = `
+<body>
+  <div>
+    <div
+      id="graphviz2"
+    >
+      <svg
+        height="500"
+        viewBox="0.00 0.00 62.00 116.00"
+        width="500"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        
+
+        <g
+          class="graph"
+          id="graph0"
+          transform="scale(1 1) rotate(0) translate(4 112)"
+        >
+          
+
+          <title>
+            %0
+          </title>
+          
+
+          <polygon
+            fill="#ffffff"
+            points="-4,4 -4,-112 58,-112 58,4 -4,4"
+            stroke="transparent"
+          />
+          
+
+          <!-- a -->
+          
+
+          <g
+            class="node"
+            id="node1"
+          >
+            
+
+            <title>
+              a
+            </title>
+            
+
+            <ellipse
+              cx="27"
+              cy="-90"
+              fill="none"
+              rx="27"
+              ry="18"
+              stroke="#000000"
+            />
+            
+
+            <text
+              fill="#000000"
+              font-family="Times,serif"
+              font-size="14.00"
+              text-anchor="middle"
+              x="27"
+              y="-85.8"
+            >
+              a
+            </text>
+            
+
+          </g>
+          
+
+          <!-- b -->
+          
+
+          <g
+            class="node"
+            id="node2"
+          >
+            
+
+            <title>
+              b
+            </title>
+            
+
+            <ellipse
+              cx="27"
+              cy="-18"
+              fill="none"
+              rx="27"
+              ry="18"
+              stroke="#000000"
+            />
+            
+
+            <text
+              fill="#000000"
+              font-family="Times,serif"
+              font-size="14.00"
+              text-anchor="middle"
+              x="27"
+              y="-13.8"
+            >
+              b
+            </text>
+            
+
+          </g>
+          
+
+          <!-- a&#45;&gt;b -->
+          
+
+          <g
+            class="edge"
+            id="edge1"
+          >
+            
+
+            <title>
+              a-&gt;b
+            </title>
+            
+
+            <path
+              d="M27,-71.8314C27,-64.131 27,-54.9743 27,-46.4166"
+              fill="none"
+              stroke="#000000"
+            />
+            
+
+            <polygon
+              fill="#000000"
+              points="30.5001,-46.4132 27,-36.4133 23.5001,-46.4133 30.5001,-46.4132"
+              stroke="#000000"
+            />
+            
+
+          </g>
+          
+
+        </g>
+        
+
+      </svg>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<Graphviz /> digraph { a -> b } matches expected container snapshot 1`] = `
+<div>
+  <div
+    id="graphviz3"
+  >
+    <svg
+      height="500"
+      viewBox="0.00 0.00 62.00 116.00"
+      width="500"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      
+
+      <g
+        class="graph"
+        id="graph0"
+        transform="scale(1 1) rotate(0) translate(4 112)"
+      >
+        
+
+        <title>
+          %0
+        </title>
+        
+
+        <polygon
+          fill="#ffffff"
+          points="-4,4 -4,-112 58,-112 58,4 -4,4"
+          stroke="transparent"
+        />
+        
+
+        <!-- a -->
+        
+
+        <g
+          class="node"
+          id="node1"
+        >
+          
+
+          <title>
+            a
+          </title>
+          
+
+          <ellipse
+            cx="27"
+            cy="-90"
+            fill="none"
+            rx="27"
+            ry="18"
+            stroke="#000000"
+          />
+          
+
+          <text
+            fill="#000000"
+            font-family="Times,serif"
+            font-size="14.00"
+            text-anchor="middle"
+            x="27"
+            y="-85.8"
+          >
+            a
+          </text>
+          
+
+        </g>
+        
+
+        <!-- b -->
+        
+
+        <g
+          class="node"
+          id="node2"
+        >
+          
+
+          <title>
+            b
+          </title>
+          
+
+          <ellipse
+            cx="27"
+            cy="-18"
+            fill="none"
+            rx="27"
+            ry="18"
+            stroke="#000000"
+          />
+          
+
+          <text
+            fill="#000000"
+            font-family="Times,serif"
+            font-size="14.00"
+            text-anchor="middle"
+            x="27"
+            y="-13.8"
+          >
+            b
+          </text>
+          
+
+        </g>
+        
+
+        <!-- a&#45;&gt;b -->
+        
+
+        <g
+          class="edge"
+          id="edge1"
+        >
+          
+
+          <title>
+            a-&gt;b
+          </title>
+          
+
+          <path
+            d="M27,-71.8314C27,-64.131 27,-54.9743 27,-46.4166"
+            fill="none"
+            stroke="#000000"
+          />
+          
+
+          <polygon
+            fill="#000000"
+            points="30.5001,-46.4132 27,-36.4133 23.5001,-46.4133 30.5001,-46.4132"
+            stroke="#000000"
+          />
+          
+
+        </g>
+        
+
+      </g>
+      
+
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`<Graphviz /> graph { a -- b } matches expected baseElement snapshot 1`] = `
 <body>
   <div>
     <div
@@ -145,10 +447,10 @@ exports[`<Graphviz /> matches expected snapshot 1`] = `
 </body>
 `;
 
-exports[`<Graphviz /> matches expected snapshot 2`] = `
+exports[`<Graphviz /> graph { a -- b } matches expected container snapshot 1`] = `
 <div>
   <div
-    id="graphviz0"
+    id="graphviz1"
   >
     <svg
       height="500"
