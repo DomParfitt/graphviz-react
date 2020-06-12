@@ -2,12 +2,13 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "only-warn"
   ],
   "extends": [
     "airbnb-typescript"
   ],
   "parserOptions": {
-    "project": "tsconfig.json"
+    "project": "tsconfig.eslint.json"
   }
 }
