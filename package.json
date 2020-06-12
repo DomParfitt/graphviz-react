@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "files": [
-    "src/*",
+    "src/*.tsx",
     "lib/*"
   ],
   "dependencies": {
