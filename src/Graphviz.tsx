@@ -15,8 +15,8 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
 
   constructor(props: IGraphvizProps) {
     super(props);
-    this.id = "graphviz" + Graphviz.count;
-    Graphviz.count++;
+    this.id = `graphviz${Graphviz.count}`;
+    Graphviz.count += 1;
   }
 
   public render(): JSX.Element {
@@ -34,14 +34,14 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
   }
 
   private renderGraph() {
-    graphviz('#' + this.id)
+    graphviz(`#${this.id}`)
       .options(this.options())
       .renderDot(this.props.dot);
   }
 
   private options(): GraphvizOptions {
     if (!this.props.options) {
-      return Graphviz.defaultOptions
+      return Graphviz.defaultOptions;
     }
 
     const options: GraphvizOptions = Graphviz.defaultOptions;
@@ -55,6 +55,6 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
 }
 
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
-  dot: string,
-  options?: GraphvizOptions,
+  dot: string;
+  options?: GraphvizOptions;
 }
