@@ -11,7 +11,8 @@ beforeAll(() => {
 
 describe('<Graphviz />', () => {
   it('matches expected snapshot', () => {
-    const tree = render(<Graphviz dot={'graph { a -- b }'} />);
-    expect(tree).toMatchSnapshot();
+    const { baseElement, container } = render(<Graphviz dot={'graph { a -- b }'} />);
+    expect(baseElement).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
