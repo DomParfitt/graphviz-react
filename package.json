@@ -8,7 +8,7 @@
     "build": "tsc",
     "clean": "rm -rf lib",
     "clean-build": "npm run clean && npm run build",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint . --max-warnings=0",
     "prepublish": "npm run clean-build",
     "test": "jest"
   },
