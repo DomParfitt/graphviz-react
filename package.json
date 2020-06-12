@@ -5,11 +5,12 @@
   "main": "./lib/Graphviz.js",
   "types": "./lib/Graphviz.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "clean": "rm -rf lib",
     "clean-build": "npm run clean && npm run build",
-    "prepublish": "npm run clean-build"
+    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.tsx",
+    "prepublish": "npm run clean-build",
+    "test": "jest"
   },
   "keywords": [
     "React",
@@ -22,7 +23,7 @@
   },
   "license": "MIT",
   "files": [
-    "src/*",
+    "src/*.tsx",
     "lib/*"
   ],
   "dependencies": {
@@ -30,10 +31,34 @@
     "react": "^16.13.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.2.1",
     "@types/d3-graphviz": "^2.6.3",
+    "@types/jest": "^25.2.3",
+    "@types/jsdom": "^16.2.3",
     "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
+    "jest": "^26.0.1",
+    "jsdom": "^16.2.2",
     "react-dom": "^16.13.1",
+    "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.9.5"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
