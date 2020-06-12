@@ -1,18 +1,22 @@
-import * as React from 'react';
 import { render } from '@testing-library/react';
+import * as React from 'react';
 import { Graphviz } from './Graphviz';
 
-beforeAll(() => {
-  // Mock out the `getTotalLength` method for SVG as this is not currently implemented by JSDOM.
-  // See: https://github.com/jsdom/jsdom/issues/1330 & https://github.com/jsdom/jsdom/issues/1423
-  // @ts-ignore
-  SVGElement.prototype.getTotalLength = jest.fn();
-});
+// Mock out the `getTotalLength` method for SVG as this is not currently implemented by JSDOM.
+// See: https://github.com/jsdom/jsdom/issues/1330 & https://github.com/jsdom/jsdom/issues/1423
+// @ts-ignore
+SVGElement.prototype.getTotalLength = jest.fn();
 
 describe('<Graphviz />', () => {
-  it('matches expected snapshot', () => {
+  describe('graph { a -- b }', () => {
     const { baseElement, container } = render(<Graphviz dot={'graph { a -- b }'} />);
-    expect(baseElement).toMatchSnapshot();
-    expect(container).toMatchSnapshot();
+
+    it('matches expected baseElement snapshot', () => {
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    it('matches expected container snapshot', () => {
+      expect(container).toMatchSnapshot();
+    });
   });
 });
