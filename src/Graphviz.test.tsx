@@ -7,7 +7,7 @@ beforeAll(() => {
   // See: https://github.com/jsdom/jsdom/issues/1330 & https://github.com/jsdom/jsdom/issues/1423
   // @ts-ignore
   SVGElement.prototype.getTotalLength = jest.fn();
-})
+});
 
 describe('<Graphviz />', () => {
   it('matches expected snapshot', () => {
