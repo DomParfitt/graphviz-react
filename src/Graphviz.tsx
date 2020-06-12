@@ -1,5 +1,5 @@
-import { graphviz, GraphvizOptions } from 'd3-graphviz';
 import * as React from 'react';
+import { graphviz, GraphvizOptions } from 'd3-graphviz';
 
 export class Graphviz extends React.Component<IGraphvizProps, any> {
   private static count = 0;
