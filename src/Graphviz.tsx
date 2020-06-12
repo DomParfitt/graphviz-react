@@ -43,13 +43,13 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
   };
 
   private appendWasmScript = () => {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
 
-    script.src = "https://unpkg.com/@hpcc-js/wasm/dist/index.min.js";
-    script.type = "application/javascript/"
+    script.src = 'https://unpkg.com/@hpcc-js/wasm/dist/index.min.js';
+    script.type = 'application/javascript/';
 
     document.body.appendChild(script);
-  }
+  };
 }
 
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
