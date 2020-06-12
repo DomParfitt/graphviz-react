@@ -9,7 +9,6 @@ export declare class Graphviz extends React.Component<IGraphvizProps, any> {
     componentDidMount: () => void;
     componentDidUpdate: () => void;
     private renderGraph;
-    private options;
 }
 export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
     dot: string;

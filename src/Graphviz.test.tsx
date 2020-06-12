@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Graphviz } from './Graphviz';
 import { render } from '@testing-library/react';
+import { Graphviz } from './Graphviz';
 
 beforeAll(() => {
   // Mock out the `getTotalLength` method for SVG as this is not currently implemented by JSDOM.
