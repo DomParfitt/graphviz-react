@@ -74,7 +74,7 @@ width: 500
 zoom: false
 ```
 
-Any provided options are treated as additive to the default options. That is, the values above will not be overwritten unless by the provided options unless explicitly done so.
+Any provided options are treated as additive to the default options. That is, the values above will not be overwritten by the provided options unless explicitly done so.
 
 ## Dependencies
 
