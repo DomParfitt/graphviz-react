@@ -1,12 +1,10 @@
-import React from 'react';
-
-import { OptionsSelector, IOption } from './components/OptionSelector';
-import { GraphInput } from './components/GraphInput';
-import { GraphvizOptions } from 'd3-graphviz';
-import { Row, Col, Container } from 'react-bootstrap';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import type { GraphvizOptions } from 'd3-graphviz';
 import { Graphviz } from 'graphviz-react';
+import React, { useState } from 'react';
+import { GraphInput, OptionsSelector, Options } from './components';
 
-const defaults: GraphvizOptions = {
+const defaults: Options<GraphvizOptions> = {
   height: 550,
   width: 550,
   fit: true,
@@ -16,10 +14,20 @@ const defaults: GraphvizOptions = {
   engine: 'dot',
 };
 
-const options: IOption[] = [
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const options = [
   { name: 'useWorker', type: 'boolean' },
-  { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'], default: defaults.engine },
-  { name: 'keyMode', type: 'list', values: ['title', 'id', 'tag-index', 'index'] },
+  {
+    name: 'engine',
+    type: 'list',
+    values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'],
+    default: defaults.engine,
+  },
+  {
+    name: 'keyMode',
+    type: 'list',
+    values: ['title', 'id', 'tag-index', 'index'],
+  },
   { name: 'fade', type: 'boolean' },
   { name: 'tweenPaths', type: 'boolean' },
   { name: 'tweenShapes', type: 'boolean' },
@@ -33,45 +41,53 @@ const options: IOption[] = [
   { name: 'fit', type: 'boolean', default: defaults.fit },
 ];
 
-export default class App extends React.Component<any, AppState> {
+const App = () => {
+  const [dot, setDot] = useState('graph { a }');
+  const [graphOptions, setGraphOptions] = useState(defaults);
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      dot: 'graph { a }',
-      graphOptions: defaults,
-    };
-  }
+  const parent: React.CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+  };
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <h1 style={{ textAlign: "center" }}>Graphviz-React</h1>
-        <Container fluid={true}>
-          <Row>
-            <Col sm={2}>
-              <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
-            </Col>
-            <Col>
-              <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
-            </Col>
-            <Col>
-              <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
-            </Col>
-          </Row>
-        </Container>
+  const child: React.CSSProperties = {
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: '30%',
+  };
+
+  return (
+    <>
+      <h1 style={{ textAlign: 'center' }}>Graphviz-React</h1>
+      <div style={parent}>
+        <div style={child}>
+          <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
+        </div>
+        <div style={child}>
+          <OptionsSelector
+            options={defaults}
+            onChange={(name, value) =>
+              setGraphOptions({ ...graphOptions, [name]: value })
+            }
+            allowedValues={{
+              engine: [
+                'circo',
+                'dot',
+                'fdp',
+                'neato',
+                'osage',
+                'patchwork',
+                'twopi',
+              ],
+            }}
+          />
+        </div>
+        <div style={child}>
+          <Graphviz dot={dot} options={graphOptions} />
+        </div>
       </div>
-    );
-  }
+    </>
+  );
+};
 
-  private onOptionUpdate = (name: string, value: any) => {
-    const graphOptions = { ...this.state.graphOptions };
-    graphOptions[name] = value;
-    this.setState({ graphOptions });
-  }
-}
-
-interface AppState {
-  dot: string,
-  graphOptions: any,
-}
+export default App;
