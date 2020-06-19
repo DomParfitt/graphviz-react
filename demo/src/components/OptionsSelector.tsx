@@ -53,6 +53,7 @@ const OptionInput = ({
     case 'number':
       return (
         <input
+          style={child}
           type="number"
           defaultValue={value.toString()}
           onChange={(event) =>
@@ -63,6 +64,7 @@ const OptionInput = ({
     case 'boolean':
       return (
         <input
+          style={child}
           type="checkbox"
           defaultChecked={value}
           onChange={(event) => onChange(event.target.checked)}
@@ -72,6 +74,7 @@ const OptionInput = ({
       if (!allowedValues) {
         return (
           <input
+            style={child}
             type="input"
             defaultValue={value}
             onChange={(event) => onChange(event.target.value)}
@@ -81,6 +84,7 @@ const OptionInput = ({
 
       return (
         <select
+          style={child}
           defaultValue={value}
           onChange={(event) => onChange(event.target.value)}
         >
