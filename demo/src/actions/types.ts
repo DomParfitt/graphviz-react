@@ -1,0 +1,2 @@
+export const SET_DOT = 'SET_DOT';
+export const TOGGLE_BOOLEAN_OPTION = 'TOGGLE_BOOLEN_OPTION';
