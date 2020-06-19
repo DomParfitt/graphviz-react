@@ -6,19 +6,19 @@ import { GraphInput, OptionsSelector, Options } from './components';
 import Grid from './components/Grid';
 
 const defaults: Options<GraphvizOptions> = {
-  convertEqualSidedPolygons: false,
+  height: 550,
+  width: 550,
+  scale: 1,
+  tweenPrecision: 1,
   engine: 'dot',
+  keyMode: 'title',
+  convertEqualSidedPolygons: false,
   fade: false,
   growEnteringEdges: false,
   fit: true,
-  keyMode: 'title',
-  height: 550,
-  scale: 1,
   tweenPaths: false,
-  tweenPrecision: 1,
   tweenShapes: false,
   useWorker: false,
-  width: 550,
   zoom: false,
 };
 
