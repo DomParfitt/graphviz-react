@@ -1,13 +1,11 @@
-export const examples = {
-    simple_graph:
-        `graph {
+const examples = {
+  simple_graph: `graph {
     a -- b
     a -- c
     b -- d
     c -- d
 }`,
-    simple_directed_graph:
-        `digraph {
+  simple_directed_graph: `digraph {
     rankdir=LR
     a -> b
     b -> c
@@ -17,3 +15,5 @@ export const examples = {
     e -> a
 }`,
 };
+
+export default examples;
