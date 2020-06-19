@@ -1,111 +1,112 @@
-import React from "react";
 import { read } from 'graphlib-dot';
-import { examples } from "../examples/examples";
-import { Row, Container } from "react-bootstrap";
+import React, { useState } from 'react';
+import examples from '../examples';
 
-export class GraphInput extends React.Component<GraphInputProps, GraphInputState> {
+const parent: React.CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap',
+};
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      autoUpdate: false,
-      dot: this.props.dot || '',
-      error: '',
-    }
-  }
-
-  public render() {
-    const options: JSX.Element[] = [];
-    options.push(
-      <option key='0' value=''>--- Examples ---</option>
-    );
-    Object.entries(examples).forEach(([key, value], index) => {
-      options.push(
-        <option key={index + 1} value={value}>
-          {
-            key.split('_')
-              .map((key) => key.charAt(0).toUpperCase() + key.slice(1))
-              .join(' ')
-          }
-        </option>
-      );
-    });
-    return (
-      <Container fluid={true}>
-        <Row>
-          <textarea
-            rows={15}
-            value={this.state.dot}
-            onChange={this.onChange}
-          />
-          <div style={{ color: 'red' }}>{this.state.error}</div>
-        </Row>
-        <Row>
-          <select onChange={this.selectExample}>
-            {options}
-          </select>
-        </Row>
-        <Row>
-          <label>Auto-update? &nbsp;</label>
-          <input
-            type="checkbox"
-            onChange={
-              (event: any) => {
-                this.setState({ autoUpdate: event.target.checked });
-              }
-            }
-          />
-        </Row>
-        <Row>
-          <button
-            onClick={this.onClick}>Update</button>
-        </Row>
-      </Container>
-    );
-  }
-
-  private selectExample = (event: any) => {
-    const dot = event.target.value;
-    if (dot) {
-      this.setState({ dot });
-      this.updateGraph(dot);
-    }
-  }
-
-  private onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const dot = event.target.value;
-    this.setState({ dot });
-    if (this.state.autoUpdate) {
-      this.updateGraph(dot);
-    }
-  }
-
-  private onClick = () => {
-    this.updateGraph(this.state.dot);
-  }
-
-  private updateGraph = (dot: string) => {
-    try {
-      read(dot);
-      this.props.onUpdate(dot);
-      this.setState({
-        error: ''
-      })
-    } catch (err) {
-      this.setState({
-        error: `Parse Error: ${err.message}`,
-      });
-    }
-  }
-}
-
-interface GraphInputState {
-  autoUpdate: boolean,
-  dot: string,
-  error: string,
-}
+const child: React.CSSProperties = {
+  flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: '100%',
+};
 
 export interface GraphInputProps {
-  dot?: string,
-  onUpdate: (dot: string) => void,
+  initialDot?: string;
+  onUpdate: (dot: string) => void;
 }
+
+export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
+  const [dot, setDot] = useState(initialDot);
+  const [error, setError] = useState('');
+  const [autoUpdate, setAutoUpdate] = useState(false);
+
+  const updateDot = (newDot: string, updateGraph: boolean) => {
+    setDot(newDot);
+    if (updateGraph) {
+      try {
+        read(newDot);
+        onUpdate(newDot);
+        setError('');
+      } catch (err) {
+        setError(`Parse Error: ${err.message}`);
+      }
+    }
+  };
+
+  return (
+    <div style={parent}>
+      <InputArea
+        dot={dot}
+        error={error}
+        onChange={(newDot) => updateDot(newDot, autoUpdate)}
+      />
+      <ExampleSelector onChange={(newDot) => updateDot(newDot, true)} />
+      <AutoUpdateSelector
+        onChange={(shouldAutoUpdate) => setAutoUpdate(shouldAutoUpdate)}
+      />
+      <button style={child} type="button" onClick={() => updateDot(dot, true)}>
+        Update
+      </button>
+    </div>
+  );
+};
+
+const InputArea = ({
+  dot,
+  error,
+  onChange,
+}: {
+  dot: string;
+  error: string;
+  onChange: (dot: string) => void;
+}) => (
+  <>
+    <textarea
+      style={child}
+      rows={15}
+      value={dot}
+      onChange={(event) => onChange(event.target.value)}
+    />
+    <div style={{ ...child, color: 'red' }}>{error}</div>
+  </>
+);
+
+const ExampleSelector = ({ onChange }: { onChange: (dot: string) => void }) => (
+  <select
+    style={child}
+    onChange={(event) => {
+      if (event.target.value) {
+        onChange(event.target.value);
+      }
+    }}
+  >
+    {Object.entries({ '--- Examples ---': '', ...examples }).map(
+      ([key, value]) => (
+        <option key={key} value={value}>
+          {key
+            .split('_')
+            .map((_key) => `${_key.charAt(0).toUpperCase()}${_key.slice(1)}`)
+            .join(' ')}
+        </option>
+      )
+    )}
+  </select>
+);
+
+const AutoUpdateSelector = ({
+  onChange,
+}: {
+  onChange: (autoUpdate: boolean) => void;
+}) => (
+  // eslint-disable-next-line jsx-a11y/label-has-associated-control
+  <label style={child}>
+    {'Auto-update? '}
+    <input
+      type="checkbox"
+      onChange={(event) => onChange(event.target.checked)}
+    />
+  </label>
+);
