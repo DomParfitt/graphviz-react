@@ -9,6 +9,8 @@ const child: React.CSSProperties = {
   flexGrow: 1,
   flexShrink: 0,
   flexBasis: '50%',
+  marginTop: '5px',
+  marginBottom: '5px',
 };
 
 type OptionsType = { [key: string]: OptionValue };
