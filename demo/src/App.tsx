@@ -37,7 +37,7 @@ const App = () => {
       <Grid>
         <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
         <OptionsSelector
-          options={defaults}
+          options={graphOptions}
           onChange={(name, value) =>
             setGraphOptions({ ...graphOptions, [name]: value })
           }
