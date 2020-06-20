@@ -17,8 +17,8 @@ export const OptionsSelector = <T extends OptionsType>({
   <div style={parent}>
     {Object.entries(options).map(([key, value]) => (
       <>
-        <div style={child}>{key}</div>
-        <div style={child}>
+        <div style={child}>{camelCaseToWords(key)}</div>
+        <div style={{ ...child, textAlign: 'center' }}>
           <OptionInput
             value={value}
             allowedValues={allowedValues ? allowedValues[key] : undefined}
@@ -29,3 +29,12 @@ export const OptionsSelector = <T extends OptionsType>({
     ))}
   </div>
 );
+
+function camelCaseToWords(input: string): string {
+  return input
+    .split('')
+    .map((char, index) =>
+      index === 0 ? char.toUpperCase() : /[A-Z]/.test(char) ? ` ${char}` : char
+    )
+    .join('');
+}
