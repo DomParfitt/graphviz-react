@@ -1,2 +1,2 @@
-export * from './GraphInput';
 export * from './OptionsSelector';
+export * from './types';
