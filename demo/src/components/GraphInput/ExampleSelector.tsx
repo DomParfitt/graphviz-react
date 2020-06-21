@@ -21,7 +21,7 @@ const ExampleSelector = ({
         <option key={key} value={value}>
           {key
             .split('_')
-            .map((_key) => `${_key.charAt(0).toUpperCase()}${_key.slice(1)}`)
+            .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
             .join(' ')}
         </option>
       )
