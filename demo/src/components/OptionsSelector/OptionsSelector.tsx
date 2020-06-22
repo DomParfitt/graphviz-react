@@ -1,7 +1,18 @@
 import React from 'react';
 import OptionInput from './OptionInput';
-import { child, parent } from './styles';
 import { OptionValue, OptionsType } from './types';
+
+const parent: React.CSSProperties = {
+  border: '1px solid black',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+};
+
+const child: React.CSSProperties = {
+  border: '1px solid black',
+  padding: '10px',
+  textAlign: 'center',
+};
 
 export interface OptionsSelectorProps<T extends OptionsType> {
   options: T;
@@ -24,7 +35,7 @@ export const OptionsSelector = <T extends OptionsType>({
             .map((char, index) => (index === 0 ? char.toUpperCase() : char))
             .join('')}
         </div>
-        <div style={{ ...child, textAlign: 'center' }}>
+        <div style={child}>
           <OptionInput
             value={value}
             allowedValues={allowedValues ? allowedValues[key] : undefined}
