@@ -13,7 +13,7 @@ const InputArea = ({
   <>
     <textarea
       style={child}
-      rows={15}
+      rows={25}
       value={dot}
       onChange={(event) => onChange(event.target.value)}
     />
