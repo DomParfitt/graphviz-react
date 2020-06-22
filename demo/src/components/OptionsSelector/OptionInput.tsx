@@ -1,6 +1,11 @@
 import React from 'react';
 import { OptionValue } from './types';
 
+const style: React.CSSProperties = {
+  width: '100%',
+  textAlign: 'center',
+};
+
 const OptionInput = ({
   value,
   allowedValues,
@@ -14,6 +19,7 @@ const OptionInput = ({
     case 'number':
       return (
         <input
+          style={style}
           type="number"
           defaultValue={value.toString()}
           onChange={(event) =>
@@ -24,6 +30,7 @@ const OptionInput = ({
     case 'boolean':
       return (
         <input
+          style={style}
           type="checkbox"
           defaultChecked={value}
           onChange={(event) => onChange(event.target.checked)}
@@ -33,6 +40,7 @@ const OptionInput = ({
       if (!allowedValues) {
         return (
           <input
+            style={style}
             type="input"
             defaultValue={value}
             onChange={(event) => onChange(event.target.value)}
@@ -42,7 +50,7 @@ const OptionInput = ({
 
       return (
         <select
-          // style={child}
+          style={style}
           defaultValue={value}
           onChange={(event) => onChange(event.target.value)}
         >
