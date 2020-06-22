@@ -4,6 +4,7 @@ import { Graphviz } from 'graphviz-react';
 import React, { useState } from 'react';
 import { GraphInput, OptionsSelector, Options } from './components';
 import Grid from './components/Grid';
+import './App.css';
 
 const defaults: Options<GraphvizOptions> = {
   height: 550,
