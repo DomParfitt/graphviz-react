@@ -5,18 +5,18 @@ interface GridProps {
 }
 
 const Grid = ({
-  columns,
   children,
+  columns = React.Children.count(children),
 }: GridProps & { children: React.ReactNode }) => {
   const parent: React.CSSProperties = {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1.5fr 3fr',
   };
 
   const container: React.CSSProperties = {
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: `${100 / (columns || React.Children.count(children))}%`,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
     padding: '10px',
   };
 
