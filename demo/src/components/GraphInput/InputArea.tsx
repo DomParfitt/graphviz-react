@@ -3,11 +3,11 @@ import { child } from './styles';
 
 const InputArea = ({
   dot,
-  error,
+  error = '',
   onChange,
 }: {
   dot: string;
-  error: string;
+  error?: string;
   onChange: (dot: string) => void;
 }) => (
   <>
