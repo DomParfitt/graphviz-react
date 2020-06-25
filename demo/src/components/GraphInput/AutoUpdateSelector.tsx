@@ -6,7 +6,6 @@ const AutoUpdateSelector = ({
 }: {
   onChange: (autoUpdate: boolean) => void;
 }) => (
-  // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label style={child}>
     {'Auto-update? '}
     <input

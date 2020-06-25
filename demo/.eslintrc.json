@@ -17,6 +17,12 @@
   "rules": {
     "prettier/prettier": "warn",
     "react/jsx-curly-newline": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "depth": 2
+      }
+    ]
   }
 }
