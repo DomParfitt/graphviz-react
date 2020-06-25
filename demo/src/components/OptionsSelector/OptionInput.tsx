@@ -21,6 +21,8 @@ const OptionInput = ({
         <input
           style={style}
           type="number"
+          min={0}
+          step={0}
           defaultValue={value.toString()}
           onChange={(event) =>
             onChange(Number.parseInt(event.target.value, 10))
