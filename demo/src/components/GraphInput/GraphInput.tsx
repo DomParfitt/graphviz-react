@@ -16,7 +16,7 @@ export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
   const [error, setError] = useState('');
   const [autoUpdate, setAutoUpdate] = useState(false);
 
-  const updateDot = (newDot: string, updateGraph: boolean) => {
+  const updateDot = (newDot: string, updateGraph: boolean = true) => {
     setDot(newDot);
     if (updateGraph) {
       try {
@@ -38,12 +38,12 @@ export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
       />
       <ExampleSelector
         examples={examples}
-        onChange={(newDot) => updateDot(newDot, true)}
+        onChange={(example) => updateDot(example)}
       />
       <AutoUpdateSelector
         onChange={(shouldAutoUpdate) => setAutoUpdate(shouldAutoUpdate)}
       />
-      <button style={child} type="button" onClick={() => updateDot(dot, true)}>
+      <button style={child} type="button" onClick={() => updateDot(dot)}>
         Update
       </button>
     </div>
