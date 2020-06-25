@@ -6,9 +6,11 @@ import { GraphInput, OptionsSelector, Options } from './components';
 import Grid from './components/Grid';
 import './App.css';
 
+const { innerWidth, innerHeight } = window;
+
 const defaults: Options<GraphvizOptions> = {
-  height: 550,
-  width: 550,
+  height: Math.floor(innerHeight * 0.7),
+  width: Math.floor(innerWidth * 0.5),
   scale: 1,
   tweenPrecision: 1,
   engine: 'dot',
