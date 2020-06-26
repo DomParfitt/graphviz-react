@@ -10,7 +10,7 @@ const Grid = ({
 }: GridProps & { children: React.ReactNode }) => {
   const parent: React.CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1.5fr 3fr',
+    gridTemplateColumns: '1fr 3fr',
   };
 
   const container: React.CSSProperties = {
