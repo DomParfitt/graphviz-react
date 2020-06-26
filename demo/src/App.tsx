@@ -2,15 +2,20 @@
 import type { GraphvizOptions } from 'd3-graphviz';
 import { Graphviz } from 'graphviz-react';
 import React, { useState } from 'react';
-import { GraphInput, OptionsSelector, Options } from './components';
+import {
+  GraphInput,
+  OptionsSelector,
+  Options,
+  TabbedContainer,
+} from './components';
 import Grid from './components/Grid';
-import './App.css';
+// import './App.css';
 
 const { innerWidth, innerHeight } = window;
 
 const defaults: Options<GraphvizOptions> = {
   height: Math.floor(innerHeight * 0.7),
-  width: Math.floor(innerWidth * 0.5),
+  width: Math.floor(innerWidth * 0.75),
   scale: 1,
   tweenPrecision: 1,
   engine: 'dot',
@@ -38,14 +43,16 @@ const App = () => {
     <>
       <h1 style={{ textAlign: 'center' }}>Graphviz-React</h1>
       <Grid>
-        <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
-        <OptionsSelector
-          options={graphOptions}
-          onChange={(name, value) =>
-            setGraphOptions({ ...graphOptions, [name]: value })
-          }
-          allowedValues={allowedValues}
-        />
+        <TabbedContainer labels={['Input', 'Settings']}>
+          <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
+          <OptionsSelector
+            options={graphOptions}
+            onChange={(name, value) =>
+              setGraphOptions({ ...graphOptions, [name]: value })
+            }
+            allowedValues={allowedValues}
+          />
+        </TabbedContainer>
         <Graphviz dot={dot} options={graphOptions} />
       </Grid>
     </>
