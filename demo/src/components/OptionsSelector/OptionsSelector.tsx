@@ -3,13 +3,17 @@ import OptionInput from './OptionInput';
 import { OptionValue, OptionsType } from './types';
 
 const parent: React.CSSProperties = {
-  border: '1px solid black',
+  borderColor: 'black',
+  borderWidth: '1px',
+  borderStyle: 'solid',
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
 };
 
 const child: React.CSSProperties = {
-  border: '1px solid black',
+  borderColor: 'black',
+  borderWidth: '1px',
+  borderStyle: 'solid',
   padding: '10px',
   textAlign: 'center',
 };
