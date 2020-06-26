@@ -9,5 +9,5 @@ export const child: CSSProperties = {
   flexGrow: 1,
   flexShrink: 0,
   flexBasis: '100%',
-  margin: '2px',
+  padding: '2px',
 };
