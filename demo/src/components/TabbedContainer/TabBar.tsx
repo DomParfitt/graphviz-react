@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { Tab } from './Tab';
+import styled from 'styled-components';
+import Tab from './Tab';
+
+const Bar = styled.div`
+  display: flex;
+`;
 
 interface TabBarProps {
   labels?: string[];
   onClick?: (index: number) => void;
 }
 
-const TabBar = ({ labels = [], onClick = (index) => {} }: TabBarProps) => {
+const TabBar = ({ labels = [], onClick = () => {} }: TabBarProps) => {
   const [active, setActive] = useState(0);
 
   return (
-    <div>
+    <Bar>
       {labels.map((label, index) => (
         <Tab
           active={active === index}
@@ -21,7 +26,7 @@ const TabBar = ({ labels = [], onClick = (index) => {} }: TabBarProps) => {
           }}
         />
       ))}
-    </div>
+    </Bar>
   );
 };
 
