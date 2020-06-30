@@ -1,14 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { GraphvizOptions } from 'd3-graphviz';
-import { Graphviz } from 'graphviz-react';
 import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import {
   GraphInput,
+  Graphviz,
+  Grid,
   OptionsSelector,
   Options,
   TabbedContainer,
 } from './components';
-import Grid from './components/Grid';
 // import './App.css';
 
 const { innerWidth, innerHeight } = window;
@@ -40,7 +41,7 @@ const App = () => {
   const [graphOptions, setGraphOptions] = useState(defaults);
 
   return (
-    <>
+    <ThemeProvider theme={{ mode: 'light' }}>
       <h1 style={{ textAlign: 'center' }}>Graphviz-React</h1>
       <Grid>
         <TabbedContainer labels={['Input', 'Settings']}>
@@ -55,7 +56,7 @@ const App = () => {
         </TabbedContainer>
         <Graphviz dot={dot} options={graphOptions} />
       </Grid>
-    </>
+    </ThemeProvider>
   );
 };
 
