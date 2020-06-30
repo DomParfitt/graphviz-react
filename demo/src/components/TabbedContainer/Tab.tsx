@@ -1,40 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import theme from 'styled-theming';
 
-const style: React.CSSProperties = {
-  border: 'none',
-  outline: 'none',
-};
+const tabBg = theme('mode', {
+  light: 'darkgrey',
+});
 
-const activeStyle: React.CSSProperties = {
-  backgroundColor: 'darkgrey',
-};
+const tabBgHovered = theme('mode', {
+  light: 'pink',
+});
 
-const hoverStyle: React.CSSProperties = {
-  backgroundColor: 'pink',
-};
+const tabBgActive = theme('mode', {
+  light: 'grey',
+});
 
-export interface TabProps {
+const textColor = theme('mode', {
+  light: 'black',
+});
+
+const Button = styled.button<{ active: boolean }>`
+  border: none;
+  flex-grow: 1;
+  color: ${textColor};
+  background-color: ${(props) => (props.active ? tabBgActive : tabBg)};
+  :hover {
+    background-color: ${tabBgHovered};
+  }
+  :focus {
+    outline: none;
+  }
+`;
+
+interface TabProps {
   active: boolean;
   label: string;
   onClick?: () => void;
 }
 
-export const Tab = ({ active, label, onClick = () => {} }: TabProps) => {
-  const [hover, setHover] = useState(false);
-
+const Tab = ({ active, label, onClick }: TabProps) => {
   return (
-    <button
-      style={{
-        ...style,
-        ...(active ? activeStyle : {}),
-        ...(hover ? hoverStyle : {}),
-      }}
-      type="button"
-      onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <Button active={active} onClick={onClick}>
       {label}
-    </button>
+    </Button>
   );
 };
+
+export default styled(Tab)``;
