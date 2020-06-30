@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import TabBar from './TabBar';
+
+const Container = styled.div`
+  background-color: grey;
+`;
+
+const Item = styled.div`
+  padding: 5px;
+`;
 
 export interface TabbedContainerProps {
   labels?: string[];
@@ -18,14 +27,13 @@ export const TabbedContainer = ({
   );
 
   return (
-    <div>
+    <Container>
       <TabBar
         labels={paddedLabels}
         onClick={(index) => setVisibleChild(index)}
       />
-      {React.Children.map(children, (child, index) =>
-        index === visibleChild ? <div>{child}</div> : null
-      )}
-    </div>
+
+      <Item>{React.Children.toArray(children)[visibleChild]}</Item>
+    </Container>
   );
 };
