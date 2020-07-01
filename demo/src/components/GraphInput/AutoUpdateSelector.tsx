@@ -1,12 +1,11 @@
 import React from 'react';
-import { child } from './styles';
 
 const AutoUpdateSelector = ({
   onChange,
 }: {
   onChange: (autoUpdate: boolean) => void;
 }) => (
-  <label style={child}>
+  <label>
     {'Auto-update? '}
     <input
       type="checkbox"

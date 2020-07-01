@@ -1,5 +1,18 @@
 import React from 'react';
-import { child } from './styles';
+import styled from 'styled-components';
+import theme from 'styled-theming';
+import { lighten } from 'polished';
+
+const backgroundColor = theme('mode', {
+  dark: lighten(0.4, '#282c34'),
+});
+
+const Select = styled.select`
+  background-color: ${backgroundColor};
+  :focus {
+    outline: none;
+  }
+`;
 
 const ExampleSelector = ({
   examples,
@@ -8,8 +21,7 @@ const ExampleSelector = ({
   examples: { [key: string]: string };
   onChange: (dot: string) => void;
 }) => (
-  <select
-    style={child}
+  <Select
     onChange={(event) => {
       if (event.target.value) {
         onChange(event.target.value);
@@ -26,7 +38,7 @@ const ExampleSelector = ({
         </option>
       )
     )}
-  </select>
+  </Select>
 );
 
 export default ExampleSelector;

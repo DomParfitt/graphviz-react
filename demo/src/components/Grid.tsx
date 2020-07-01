@@ -1,4 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
+import theme from 'styled-theming';
+
+const bgColor = theme('mode', {
+  dark: '#282c34',
+});
+
+const Container = styled.div`
+  background-color: ${bgColor};
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+`;
+
+const Item = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+`;
 
 interface GridProps {
   columns?: number;
@@ -7,26 +25,12 @@ interface GridProps {
 const Grid = ({
   children,
   columns = React.Children.count(children),
-}: GridProps & { children: React.ReactNode }) => {
-  const parent: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 3fr',
-  };
-
-  const container: React.CSSProperties = {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '10px',
-  };
-
-  return (
-    <div style={parent}>
-      {React.Children.map(children, (child) => (
-        <div style={container}>{child}</div>
-      ))}
-    </div>
-  );
-};
+}: GridProps & { children: React.ReactNode }) => (
+  <Container>
+    {React.Children.map(children, (child) => (
+      <Item>{child}</Item>
+    ))}
+  </Container>
+);
 
 export default Grid;

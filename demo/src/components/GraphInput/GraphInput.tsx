@@ -1,10 +1,22 @@
 import { read } from 'graphlib-dot';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import examples from '../../examples';
 import InputArea from './InputArea';
 import ExampleSelector from './ExampleSelector';
 import AutoUpdateSelector from './AutoUpdateSelector';
-import { child, parent } from './styles';
+import UpdateButton from './UpdateButton';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  > * {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    padding: 2px;
+  }
+`;
 
 export interface GraphInputProps {
   initialDot?: string;
@@ -30,22 +42,27 @@ export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
   };
 
   return (
-    <div style={parent}>
+    <Container>
       <InputArea
         dot={dot}
         error={error}
         onChange={(newDot) => updateDot(newDot, autoUpdate)}
+        onSubmit={() => updateDot(dot, true)}
       />
       <ExampleSelector
         examples={examples}
         onChange={(example) => updateDot(example)}
       />
-      <AutoUpdateSelector
+      <UpdateButton
+        update={() => updateDot(dot)}
+        setAutoUpdate={(shouldAutoUpdate) => setAutoUpdate(shouldAutoUpdate)}
+      />
+      {/* <AutoUpdateSelector
         onChange={(shouldAutoUpdate) => setAutoUpdate(shouldAutoUpdate)}
       />
-      <button style={child} type="button" onClick={() => updateDot(dot)}>
+      <button type="button" onClick={() => updateDot(dot)}>
         Update
-      </button>
-    </div>
+      </button> */}
+    </Container>
   );
 };

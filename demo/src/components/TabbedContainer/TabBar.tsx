@@ -4,6 +4,9 @@ import Tab from './Tab';
 
 const Bar = styled.div`
   display: flex;
+  > * {
+    flex-grow: 1;
+  }
 `;
 
 interface TabBarProps {

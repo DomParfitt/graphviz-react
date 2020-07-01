@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { GraphvizOptions } from 'd3-graphviz';
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import theme from 'styled-theming';
 import {
   GraphInput,
   Graphviz,
@@ -9,6 +10,7 @@ import {
   OptionsSelector,
   Options,
   TabbedContainer,
+  ThemePicker,
 } from './components';
 // import './App.css';
 
@@ -36,13 +38,34 @@ const allowedValues = {
   keyMode: ['title', 'id', 'tag-index', 'index'],
 };
 
+const bgColor = theme('mode', {
+  dark: '#282c34',
+});
+
+const textColor = theme('mode', {
+  dark: '#abb2bf',
+});
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${bgColor};
+  }
+`;
+
+const Title = styled.h1`
+  color: ${textColor};
+  font-weight: bold;
+  text-align: center;
+`;
+
 const App = () => {
   const [dot, setDot] = useState('graph { a }');
   const [graphOptions, setGraphOptions] = useState(defaults);
 
   return (
-    <ThemeProvider theme={{ mode: 'light' }}>
-      <h1 style={{ textAlign: 'center' }}>Graphviz-React</h1>
+    <ThemePicker>
+      <GlobalStyle />
+      <Title>Graphviz-React</Title>
       <Grid>
         <TabbedContainer labels={['Input', 'Settings']}>
           <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
@@ -56,7 +79,7 @@ const App = () => {
         </TabbedContainer>
         <Graphviz dot={dot} options={graphOptions} />
       </Grid>
-    </ThemeProvider>
+    </ThemePicker>
   );
 };
 

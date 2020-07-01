@@ -1,26 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from 'styled-theming';
+import { lighten } from 'polished';
 
-const tabBg = theme('mode', {
-  light: 'darkgrey',
+const tabBgActive = theme('mode', {
+  dark: lighten(0.25, '#282c34'),
 });
 
 const tabBgHovered = theme('mode', {
-  light: 'pink',
+  dark: '#61afef',
 });
 
-const tabBgActive = theme('mode', {
-  light: 'grey',
+const tabBg = theme('mode', {
+  dark: lighten(0.4, '#282c34'),
 });
 
 const textColor = theme('mode', {
-  light: 'black',
+  dark: 'black',
 });
 
 const Button = styled.button<{ active: boolean }>`
   border: none;
-  flex-grow: 1;
   color: ${textColor};
   background-color: ${(props) => (props.active ? tabBgActive : tabBg)};
   :hover {
