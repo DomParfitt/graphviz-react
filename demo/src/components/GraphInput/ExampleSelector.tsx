@@ -4,11 +4,16 @@ import theme from 'styled-theming';
 import { lighten } from 'polished';
 
 const backgroundColor = theme('mode', {
-  dark: lighten(0.4, '#282c34'),
+  dark: lighten(0, '#282c34'),
+});
+
+const textColor = theme('mode', {
+  dark: '#abb2bf',
 });
 
 const Select = styled.select`
   background-color: ${backgroundColor};
+  color: ${textColor};
   :focus {
     outline: none;
   }
