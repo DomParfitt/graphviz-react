@@ -6,6 +6,7 @@
   "dependencies": {
     "graphlib-dot": "^0.6.4",
     "graphviz-react": "file:..",
+    "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
