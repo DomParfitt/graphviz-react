@@ -1,5 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
+import theme from 'styled-theming';
+import { lighten } from 'polished';
 import { OptionValue } from './types';
+
+const backgroundColor = theme('mode', {
+  dark: lighten(0.4, '#282c34'),
+});
+
+const Input = styled.input`
+  width: 100%;
+  text-align: center;
+  background-color: ${backgroundColor};
+`;
+
+const Select = styled.select`
+  width: 100%;
+  text-align: center;
+  background-color: ${backgroundColor};
+`;
 
 const style: React.CSSProperties = {
   width: '100%',
@@ -18,8 +37,7 @@ const OptionInput = ({
   switch (typeof value) {
     case 'number':
       return (
-        <input
-          style={style}
+        <Input
           type="number"
           min={0}
           step={0}
@@ -31,8 +49,7 @@ const OptionInput = ({
       );
     case 'boolean':
       return (
-        <input
-          style={style}
+        <Input
           type="checkbox"
           defaultChecked={value}
           onChange={(event) => onChange(event.target.checked)}
@@ -41,8 +58,7 @@ const OptionInput = ({
     case 'string':
       if (!allowedValues) {
         return (
-          <input
-            style={style}
+          <Input
             type="input"
             defaultValue={value}
             onChange={(event) => onChange(event.target.value)}
@@ -51,8 +67,7 @@ const OptionInput = ({
       }
 
       return (
-        <select
-          style={style}
+        <Select
           defaultValue={value}
           onChange={(event) => onChange(event.target.value)}
         >
@@ -61,7 +76,7 @@ const OptionInput = ({
               {allowedValue}
             </option>
           ))}
-        </select>
+        </Select>
       );
     default:
       return <></>;
