@@ -50,7 +50,9 @@ const UpdateButton = ({
         {`Auto-update: ${active ? 'On' : 'Off'}`}
       </Button>
       <Button2 onClick={update} disabled={active}>
-        Update (Ctrl + Enter)
+        Update
+        <br />
+        <span style={{ fontSize: '10pt' }}>(Ctrl + Enter)</span>
       </Button2>
     </Container>
   );
