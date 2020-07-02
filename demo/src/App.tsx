@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { GraphvizOptions } from 'd3-graphviz';
 import React, { useState } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import theme from 'styled-theming';
 import {
   GraphInput,
@@ -12,7 +12,6 @@ import {
   TabbedContainer,
   ThemePicker,
 } from './components';
-// import './App.css';
 
 const { innerWidth, innerHeight } = window;
 
@@ -38,19 +37,9 @@ const allowedValues = {
   keyMode: ['title', 'id', 'tag-index', 'index'],
 };
 
-const bgColor = theme('mode', {
-  dark: '#282c34',
-});
-
 const textColor = theme('mode', {
   dark: '#abb2bf',
 });
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${bgColor};
-  }
-`;
 
 const Title = styled.h1`
   color: ${textColor};
@@ -63,8 +52,7 @@ const App = () => {
   const [graphOptions, setGraphOptions] = useState(defaults);
 
   return (
-    <ThemePicker>
-      <GlobalStyle />
+    <ThemePicker themes={['dark', 'light', 'none']}>
       <Title>Graphviz-React</Title>
       <Grid>
         <TabbedContainer labels={['Input', 'Settings']}>
