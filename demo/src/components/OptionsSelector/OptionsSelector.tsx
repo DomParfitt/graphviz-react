@@ -4,6 +4,14 @@ import theme from 'styled-theming';
 import OptionInput from './OptionInput';
 import { OptionValue, OptionsType } from './types';
 
+const backgroundColor = theme('mode', {
+  dark: '#282c34',
+});
+
+const textColor = theme('mode', {
+  dark: '#abb2bf',
+});
+
 const Container = styled.div`
   border-color: black;
   border-style: solid;
@@ -13,11 +21,11 @@ const Container = styled.div`
 `;
 
 const Item = styled.div`
-  background-color: #282c34;
+  background-color: ${backgroundColor};
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  color: #abb2bf;
+  color: ${textColor};
   padding: 10px;
   text-align: center;
 `;
