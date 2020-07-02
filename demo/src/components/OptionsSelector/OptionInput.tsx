@@ -14,17 +14,6 @@ const Input = styled.input`
   background-color: ${backgroundColor};
 `;
 
-const Select = styled.select`
-  width: 100%;
-  text-align: center;
-  background-color: ${backgroundColor};
-`;
-
-const style: React.CSSProperties = {
-  width: '100%',
-  textAlign: 'center',
-};
-
 const OptionInput = ({
   value,
   allowedValues,
@@ -67,16 +56,19 @@ const OptionInput = ({
       }
 
       return (
-        <Select
+        <Input
+          as="select"
           defaultValue={value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+            onChange(event.target.value)
+          }
         >
           {allowedValues.map((allowedValue) => (
             <option key={allowedValue} value={allowedValue}>
               {allowedValue}
             </option>
           ))}
-        </Select>
+        </Input>
       );
     default:
       return <></>;
