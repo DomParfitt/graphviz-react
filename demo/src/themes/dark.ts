@@ -22,7 +22,14 @@ const graphArea: Theme = {
   backgroundColor: colors.lightGrey,
 };
 
-const graphInput: Theme = {};
+const graphInput: Theme = {
+  autoUpdate: {
+    backgroundColor: colors.green,
+    inactive: {
+      backgroundColor: colors.red,
+    },
+  },
+};
 
 const optionsSelector: Theme = {
   input: {
