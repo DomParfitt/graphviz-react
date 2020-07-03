@@ -11,12 +11,16 @@ const {
 } = getThemeProperties(path);
 
 const Button = styled.button`
-  background-color: ${backgroundColor};
-  color: ${textColor};
-  :hover:enabled {
-    background-color: ${hoverColor};
-    color: ${hoverTextColor};
+  :enabled {
+    background-color: ${backgroundColor};
+    color: ${textColor};
+
+    :hover {
+      background-color: ${hoverColor};
+      color: ${hoverTextColor};
+    }
   }
+
   :focus {
     outline: none;
   }
