@@ -38,7 +38,7 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --max_old_space_size=4096 start",
     "predeploy": "GENERATE_SOURCEMAP=false react-scripts build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
