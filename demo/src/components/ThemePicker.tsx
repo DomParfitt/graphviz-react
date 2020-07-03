@@ -19,6 +19,7 @@ const Button = styled.button`
   background-color: ${backgroundColor};
   color: ${textColor};
   position: absolute;
+  border: 1px solid ${textColor};
   :focus {
     outline: none;
   }
