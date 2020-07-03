@@ -3,7 +3,8 @@ import { Theme } from './theme';
 
 const colors = {
   black: '#000000',
-  grey: '#282c34',
+  darkGrey: '#282c34',
+  lightGrey: '#4b5263',
   white: '#abb2bf',
   blue: '#61afef',
   red: '#be5046',
@@ -11,37 +12,39 @@ const colors = {
 };
 
 const base = {
-  backgroundColor: '#282c34',
-  textColor: '#abb2bf',
-  hoverColor: '#61afef',
+  backgroundColor: colors.darkGrey,
+  textColor: colors.white,
+  hoverColor: colors.blue,
 };
 
-const graphArea = {
-  backgroundColor: '#4b5263',
+const graphArea: Theme = {
+  backgroundColor: colors.lightGrey,
 };
 
-// const graphInput = {
-//   hoverColor: '#61afef',
-// };
+const graphInput: Theme = {
+  // hoverColor: '#61afef',
+};
 
-const optionsSelector = {
+const optionsSelector: Theme = {
   input: {
-    backgroundColor: lighten(0.4, base.backgroundColor),
-    // textColor: 'black',
+    backgroundColor: lighten(0.25, base.backgroundColor),
+    textColor: 'black',
   },
 };
 
-const tabContainer = {
-  backgroundColor: lighten(0.25, base.backgroundColor),
+const tabContainer: Theme = {
+  backgroundColor: colors.lightGrey,
+  textColor: colors.white,
   inactiveTabs: {
     backgroundColor: lighten(0.4, base.backgroundColor),
+    textColor: colors.black,
   },
 };
 
 const dark: Theme = {
   ...base,
   graphArea,
-  // graphInput,
+  graphInput,
   optionsSelector,
   tabContainer,
 };
