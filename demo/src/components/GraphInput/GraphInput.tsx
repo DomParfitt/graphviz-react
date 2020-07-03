@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import examples from '../../examples';
 import InputArea from './InputArea';
 import ExampleSelector from './ExampleSelector';
-import UpdateButton from './UpdateButton';
+import UpdateArea from './UpdateArea';
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
         examples={examples}
         onChange={(example) => updateDot(example)}
       />
-      <UpdateButton
+      <UpdateArea
         update={() => updateDot(dot)}
         setAutoUpdate={(shouldAutoUpdate) => setAutoUpdate(shouldAutoUpdate)}
       />

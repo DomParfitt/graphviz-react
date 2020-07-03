@@ -13,14 +13,14 @@ const Container = styled.div`
   }
 `;
 
-const Button = styled.button<{ active: boolean }>`
+const ToggleButton = styled.button<{ active: boolean }>`
   background-color: ${(props) => (props.active ? '#98c379' : '#be5046')};
   :focus {
     outline: none;
   }
 `;
 
-const Button2 = styled.button`
+const UpdateButton = styled.button`
   background-color: ${lighten(0.5, '#282c34')};
   :hover:enabled {
     background-color: #61afef;
@@ -30,7 +30,7 @@ const Button2 = styled.button`
   }
 `;
 
-const UpdateButton = ({
+const UpdateArea = ({
   setAutoUpdate,
   update,
 }: {
@@ -40,7 +40,7 @@ const UpdateButton = ({
   const [active, setActive] = useState(false);
   return (
     <Container>
-      <Button
+      <ToggleButton
         active={active}
         onClick={() => {
           const autoUpdate = !active;
@@ -49,14 +49,14 @@ const UpdateButton = ({
         }}
       >
         {`Auto-update: ${active ? 'On' : 'Off'}`}
-      </Button>
-      <Button2 onClick={update} disabled={active}>
+      </ToggleButton>
+      <UpdateButton onClick={update} disabled={active}>
         Update
         <br />
         <span style={{ fontSize: '10pt' }}>(Ctrl + Enter)</span>
-      </Button2>
+      </UpdateButton>
     </Container>
   );
 };
 
-export default UpdateButton;
+export default UpdateArea;
