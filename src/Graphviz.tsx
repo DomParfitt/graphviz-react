@@ -19,9 +19,12 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
     Graphviz.count += 1;
   }
 
-  public render = (): JSX.Element => (
-    <div className={this.props.className} id={this.id} />
-  );
+  public render = (): JSX.Element => {
+    const { className } = this.props;
+    return (
+      <div className={className} id={this.id} />
+    );
+  };
 
   public componentDidMount = () => {
     this.renderGraph();
