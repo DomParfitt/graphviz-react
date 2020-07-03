@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import theme from 'styled-theming';
-import { lighten } from 'polished';
+import { getProperty } from '../themes';
 
-const buttonBgColor = theme('mode', {
-  dark: lighten(0.25, '#282c34'),
-});
+const background = getProperty('backgroundColor');
+const textColor = getProperty('textColor');
 
-const Button = styled.button`
-  background-color: ${buttonBgColor};
-  position: absolute;
-  :focus {
-    outline: none;
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${background};
   }
 `;
 
@@ -20,13 +16,12 @@ const Container = styled.div`
   flex-direction: row-reverse;
 `;
 
-const bgColor = theme('mode', {
-  dark: '#282c34',
-});
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${bgColor};
+const Button = styled.button`
+  background-color: ${background};
+  color: ${textColor};
+  position: absolute;
+  :focus {
+    outline: none;
   }
 `;
 

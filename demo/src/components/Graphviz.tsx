@@ -1,16 +1,23 @@
 import { Graphviz } from 'graphviz-react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
+import { getProperty } from '../themes';
 
-const bgColor = theme('mode', {
-  dark: '#4b5263',
-});
+const path = ['graphArea'];
+const background = getProperty('backgroundColor', path);
 
 export default styled(Graphviz)`
   border: 2px solid black;
-  background-color: ${bgColor};
-  fill: ${bgColor};
+  background-color: ${background};
+  fill: ${background};
   .graph {
+    > polygon {
+      fill: ${background};
+    }
+
+    /* 
+      Below is an example of styling the graph with CSS but this will override
+      any styles present in the DOT string so may not be preferable.
+     */
     /* .node {
       > * {
         stroke: white;
@@ -34,9 +41,5 @@ export default styled(Graphviz)`
     text {
       fill: white;
     } */
-
-    > polygon {
-      fill: ${bgColor};
-    }
   }
 `;

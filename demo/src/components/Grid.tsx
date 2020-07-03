@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
+import { getProperty } from '../themes';
 
-const bgColor = theme('mode', {
-  dark: '#282c34',
-});
+const background = getProperty('backgroundColor');
 
 const Container = styled.div`
-  background-color: ${bgColor};
+  background-color: ${background};
   display: grid;
   grid-template-columns: 1fr 3fr;
 `;

@@ -1,8 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { GraphvizOptions } from 'd3-graphviz';
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import theme from 'styled-theming';
 import {
   GraphInput,
   Graphviz,
@@ -11,6 +9,7 @@ import {
   Options,
   TabbedContainer,
   ThemePicker,
+  Title,
 } from './components';
 
 const { innerWidth, innerHeight } = window;
@@ -36,16 +35,6 @@ const allowedValues = {
   engine: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'],
   keyMode: ['title', 'id', 'tag-index', 'index'],
 };
-
-const textColor = theme('mode', {
-  dark: '#abb2bf',
-});
-
-const Title = styled.h1`
-  color: ${textColor};
-  font-weight: bold;
-  text-align: center;
-`;
 
 const App = () => {
   const [dot, setDot] = useState('graph { a }');

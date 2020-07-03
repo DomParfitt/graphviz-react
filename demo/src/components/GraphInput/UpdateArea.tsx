@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { getProperty } from '../../themes';
+
+const path = ['graphInput', 'updateArea'];
+const background = getProperty('backgroundColor', path);
+const hover = getProperty('hoverColor', path);
 
 const Container = styled.div`
   display: flex;
@@ -21,9 +25,9 @@ const ToggleButton = styled.button<{ active: boolean }>`
 `;
 
 const UpdateButton = styled.button`
-  background-color: ${lighten(0.5, '#282c34')};
+  background-color: ${background};
   :hover:enabled {
-    background-color: #61afef;
+    background-color: ${hover};
   }
   :focus {
     outline: none;

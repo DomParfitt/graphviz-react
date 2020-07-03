@@ -1,18 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { lighten } from 'polished';
-import theme from 'styled-theming';
+import { getProperty } from '../../themes';
 
-const bgColor = theme('mode', {
-  dark: lighten(0, '#282c34'),
-});
-
-const textColor = theme('mode', {
-  dark: '#abb2bf',
-});
+const path = ['graphInput', 'inputArea'];
+const background = getProperty('backgroundColor', path);
+const textColor = getProperty('textColor', path);
 
 const TextArea = styled.textarea`
-  background-color: ${bgColor};
+  background-color: ${background};
   color: ${textColor};
   resize: none;
   :focus {

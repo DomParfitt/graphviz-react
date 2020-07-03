@@ -1,18 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
-import { lighten } from 'polished';
+import { getProperty } from '../../themes';
 
-const backgroundColor = theme('mode', {
-  dark: lighten(0, '#282c34'),
-});
-
-const textColor = theme('mode', {
-  dark: '#abb2bf',
-});
+const path = ['graphInput', 'exampleSelector'];
+const background = getProperty('backgroundColor', path);
+const textColor = getProperty('textColor', path);
 
 const Select = styled.select`
-  background-color: ${backgroundColor};
+  background-color: ${background};
   color: ${textColor};
   :focus {
     outline: none;

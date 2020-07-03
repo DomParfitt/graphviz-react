@@ -2,17 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { getProperty } from '../../themes';
 
-const background = (active: boolean) =>
-  getProperty('backgroundColor', [
-    'tabContainer',
-    ...(!active ? ['inactiveTabs'] : []),
-  ]);
+const path = (active: boolean) => [
+  'tabContainer',
+  ...(!active ? ['inactiveTabs'] : []),
+];
 
-const textColor = (active: boolean) =>
-  getProperty('textColor', [
-    'tabContainer',
-    ...(!active ? ['inactiveTabs'] : []),
-  ]);
+const background = (active: boolean) =>
+  getProperty('backgroundColor', path(active));
+
+const textColor = (active: boolean) => getProperty('textColor', path(active));
 
 const Button = styled.button<{ active: boolean }>`
   border: none;

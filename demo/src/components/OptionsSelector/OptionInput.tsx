@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
-import { lighten } from 'polished';
+import { getProperty } from '../../themes';
 import { OptionValue } from './types';
 
-const backgroundColor = theme('mode', {
-  dark: lighten(0.4, '#282c34'),
-});
+const path = ['optionsSelector', 'input'];
+const background = getProperty('backgroundColor', path);
 
 const Input = styled.input`
   width: 100%;
   text-align: center;
-  background-color: ${backgroundColor};
+  background-color: ${background};
 `;
 
 const OptionInput = ({
