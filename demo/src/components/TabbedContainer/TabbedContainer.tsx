@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import TabBar from './TabBar';
-import { getProperty } from '../../themes';
+import { getThemeProperties } from '../../themes';
 
 const path = ['tabContainer'];
-const background = getProperty('backgroundColor', path);
+const { backgroundColor } = getThemeProperties(path);
 
 const Container = styled.div`
-  background-color: ${background};
+  background-color: ${backgroundColor};
   border: 2px solid black;
 `;
 

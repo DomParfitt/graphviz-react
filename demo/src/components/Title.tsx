@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { getProperty } from '../themes';
+import { getThemeProperties } from '../themes';
 
-const textColor = getProperty('textColor');
+const { textColor } = getThemeProperties();
 
 const Title = styled.h1`
   color: ${textColor};

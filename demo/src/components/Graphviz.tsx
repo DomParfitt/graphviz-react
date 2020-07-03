@@ -1,17 +1,17 @@
 import { Graphviz } from 'graphviz-react';
 import styled from 'styled-components';
-import { getProperty } from '../themes';
+import { getThemeProperties } from '../themes';
 
 const path = ['graphArea'];
-const background = getProperty('backgroundColor', path);
+const { backgroundColor } = getThemeProperties(path);
 
 export default styled(Graphviz)`
   border: 2px solid black;
-  background-color: ${background};
-  fill: ${background};
+  background-color: ${backgroundColor};
+  fill: ${backgroundColor};
   .graph {
     > polygon {
-      fill: ${background};
+      fill: ${backgroundColor};
     }
 
     /* 

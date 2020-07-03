@@ -46,7 +46,7 @@ export const GraphInput = ({ initialDot = '', onUpdate }: GraphInputProps) => {
         dot={dot}
         error={error}
         onChange={(newDot) => updateDot(newDot, autoUpdate)}
-        onSubmit={() => updateDot(dot, true)}
+        submit={() => updateDot(dot, true)}
       />
       <ExampleSelector
         examples={examples}

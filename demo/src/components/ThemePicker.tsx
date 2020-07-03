@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { getProperty } from '../themes';
+import { getThemeProperties } from '../themes';
 
-const background = getProperty('backgroundColor');
-const textColor = getProperty('textColor');
+const { backgroundColor, textColor } = getThemeProperties();
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${background};
+    background-color: ${backgroundColor};
   }
 `;
 
@@ -17,7 +16,7 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: ${background};
+  background-color: ${backgroundColor};
   color: ${textColor};
   position: absolute;
   :focus {
@@ -30,14 +29,16 @@ const ThemePicker = ({
   themes,
 }: {
   children: React.ReactNode;
-  themes: [string, ...string[]];
+  themes: string[];
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const theme = themes[currentIndex];
 
   const cycleThemes = () => setCurrentIndex((currentIndex + 1) % themes.length);
 
-  return (
+  return themes.length === 0 ? (
+    <>{children}</>
+  ) : (
     <ThemeProvider theme={{ mode: theme }}>
       <GlobalStyle />
       <Container>

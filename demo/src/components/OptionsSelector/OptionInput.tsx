@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getProperty } from '../../themes';
 import { OptionValue } from './types';
+import { getThemeProperties } from '../../themes';
 
 const path = ['optionsSelector', 'input'];
-const background = getProperty('backgroundColor', path);
+const { backgroundColor, textColor } = getThemeProperties(path);
 
 const Input = styled.input`
   width: 100%;
   text-align: center;
-  background-color: ${background};
+  background-color: ${backgroundColor};
+  color: ${textColor};
 `;
 
 const OptionInput = ({

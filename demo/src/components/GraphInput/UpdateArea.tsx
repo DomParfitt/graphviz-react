@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { getProperty } from '../../themes';
+import { getThemeProperties } from '../../themes';
 
 const path = ['graphInput', 'updateArea'];
-const background = getProperty('backgroundColor', path);
-const hover = getProperty('hoverColor', path);
+const {
+  backgroundColor,
+  textColor,
+  hoverColor,
+  hoverTextColor,
+} = getThemeProperties(path);
 
 const Container = styled.div`
   display: flex;
@@ -25,9 +29,11 @@ const ToggleButton = styled.button<{ active: boolean }>`
 `;
 
 const UpdateButton = styled.button`
-  background-color: ${background};
+  background-color: ${backgroundColor};
+  color: ${textColor};
   :hover:enabled {
-    background-color: ${hover};
+    background-color: ${hoverColor};
+    color: ${hoverTextColor};
   }
   :focus {
     outline: none;

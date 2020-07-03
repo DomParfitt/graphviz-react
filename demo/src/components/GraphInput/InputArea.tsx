@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getProperty } from '../../themes';
+import { getThemeProperties } from '../../themes';
 
 const path = ['graphInput', 'inputArea'];
-const background = getProperty('backgroundColor', path);
-const textColor = getProperty('textColor', path);
+const { backgroundColor, textColor } = getThemeProperties(path);
 
 const TextArea = styled.textarea`
-  background-color: ${background};
+  background-color: ${backgroundColor};
   color: ${textColor};
   resize: none;
   :focus {
@@ -23,12 +22,12 @@ const InputArea = ({
   dot,
   error = '',
   onChange,
-  onSubmit,
+  submit,
 }: {
   dot: string;
   error?: string;
   onChange: (dot: string) => void;
-  onSubmit: () => void;
+  submit: () => void;
 }) => (
   <>
     <TextArea
@@ -37,7 +36,7 @@ const InputArea = ({
       onChange={(event) => onChange(event.target.value)}
       onKeyDown={(event) => {
         if (event.ctrlKey && event.keyCode === 13) {
-          onSubmit();
+          submit();
         }
       }}
     />

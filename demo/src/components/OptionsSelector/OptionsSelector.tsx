@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import OptionInput from './OptionInput';
 import { OptionValue, OptionsType } from './types';
-import { getProperty } from '../../themes';
+import { getThemeProperties } from '../../themes';
 
 const path = ['optionsSelector'];
-const background = getProperty('backgroundColor', path);
-const textColor = getProperty('textColor', path);
+const { backgroundColor, textColor } = getThemeProperties(path);
 
 const Container = styled.div`
   border-color: black;
@@ -17,7 +16,7 @@ const Container = styled.div`
 `;
 
 const Item = styled.div`
-  background-color: ${background};
+  background-color: ${backgroundColor};
   border-color: black;
   border-style: solid;
   border-width: 1px;

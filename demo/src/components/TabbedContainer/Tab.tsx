@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getProperty } from '../../themes';
+import { getThemeProperty } from '../../themes';
 
 const path = (active: boolean) => [
   'tabContainer',
@@ -8,16 +8,18 @@ const path = (active: boolean) => [
 ];
 
 const background = (active: boolean) =>
-  getProperty('backgroundColor', path(active));
+  getThemeProperty('backgroundColor', path(active));
 
-const textColor = (active: boolean) => getProperty('textColor', path(active));
+const textColor = (active: boolean) =>
+  getThemeProperty('textColor', path(active));
 
 const Button = styled.button<{ active: boolean }>`
   border: none;
   color: ${(props) => textColor(props.active)};
   background-color: ${(props) => background(props.active)};
+  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
   :hover {
-    background-color: ${getProperty('hoverColor', ['tabContainer'])};
+    background-color: ${getThemeProperty('hoverColor', ['tabContainer'])};
   }
   :focus {
     outline: none;
