@@ -11,6 +11,7 @@ import {
   ThemePicker,
   Title,
 } from './components';
+import { themes } from './themes';
 
 const { innerWidth, innerHeight } = window;
 
@@ -41,7 +42,7 @@ const App = () => {
   const [graphOptions, setGraphOptions] = useState(defaults);
 
   return (
-    <ThemePicker themes={['dark', 'light', 'none']}>
+    <ThemePicker themes={Object.keys(themes)}>
       <Title>Graphviz-React</Title>
       <Grid>
         <TabbedContainer labels={['Input', 'Settings']}>
