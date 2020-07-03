@@ -1,25 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getThemeProperty } from '../../themes';
+import { getThemeProperties } from '../../themes';
 
-const path = (active: boolean) => [
-  'tabContainer',
-  ...(!active ? ['inactiveTabs'] : []),
-];
+const {
+  backgroundColor,
+  textColor,
+  hoverColor,
+  hoverTextColor,
+} = getThemeProperties(['tabContainer']);
 
-const background = (active: boolean) =>
-  getThemeProperty('backgroundColor', path(active));
-
-const textColor = (active: boolean) =>
-  getThemeProperty('textColor', path(active));
+// TODO: Refactor this to allow props
+const {
+  backgroundColor: inactiveBackgroundColor,
+  textColor: inactiveTextColor,
+} = getThemeProperties(['tabContainer', 'inactiveTabs']);
 
 const Button = styled.button<{ active: boolean }>`
   border: none;
-  color: ${(props) => textColor(props.active)};
-  background-color: ${(props) => background(props.active)};
+  color: ${(props) => (props.active ? textColor : inactiveTextColor)};
+  background-color: ${(props) =>
+    props.active ? backgroundColor : inactiveBackgroundColor};
   font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
   :hover {
-    background-color: ${getThemeProperty('hoverColor', ['tabContainer'])};
+    background-color: ${hoverColor};
+    color: ${hoverTextColor};
   }
   :focus {
     outline: none;
