@@ -15,29 +15,28 @@ const base = {
   backgroundColor: colors.darkGrey,
   textColor: colors.white,
   hoverColor: colors.blue,
+  hoverTextColor: colors.black,
 };
 
 const graphArea: Theme = {
   backgroundColor: colors.lightGrey,
 };
 
-const graphInput: Theme = {
-  // hoverColor: '#61afef',
-};
+const graphInput: Theme = {};
 
 const optionsSelector: Theme = {
   input: {
-    backgroundColor: lighten(0.25, base.backgroundColor),
-    textColor: 'black',
+    backgroundColor: colors.lightGrey,
+    textColor: colors.white,
   },
 };
 
 const tabContainer: Theme = {
-  backgroundColor: colors.lightGrey,
-  textColor: colors.white,
+  backgroundColor: lighten(0.3, base.backgroundColor),
+  textColor: colors.black,
   inactiveTabs: {
-    backgroundColor: lighten(0.4, base.backgroundColor),
-    textColor: colors.black,
+    backgroundColor: colors.lightGrey,
+    textColor: colors.white,
   },
 };
 
