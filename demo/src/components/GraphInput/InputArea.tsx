@@ -15,6 +15,7 @@ const TextArea = styled.textarea`
 `;
 
 const Error = styled.div`
+  background-color: ${backgroundColor};
   color: red;
 `;
 
@@ -40,7 +41,7 @@ const InputArea = ({
         }
       }}
     />
-    <Error>{error}</Error>
+    {error.trim().length !== 0 ? <Error>{error}</Error> : null}
   </>
 );
 
