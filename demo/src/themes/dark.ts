@@ -13,7 +13,7 @@ const graphArea = {
 const graphInput = {
   backgroundColor: base.backgroundColor,
   textColor: base.textColor,
-  hoverColor: lighten(0.4, base.backgroundColor),
+  hoverColor: '#61afef',
 };
 
 const optionsSelector = {
