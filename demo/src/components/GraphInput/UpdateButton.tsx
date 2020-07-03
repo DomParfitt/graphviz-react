@@ -8,7 +8,8 @@ const Container = styled.div`
   > * {
     flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: 50%;
+    flex-basis: 45%;
+    margin: 2px;
   }
 `;
 
