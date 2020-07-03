@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getThemeProperties } from '../../themes';
+import { getThemeProperties } from '../../../themes';
 
 const path = ['graphInput', 'autoUpdate'];
 const { backgroundColor } = getThemeProperties(path);
