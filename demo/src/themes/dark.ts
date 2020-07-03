@@ -1,5 +1,5 @@
 import { lighten } from 'polished';
-import { Theme } from './theme';
+import GraphvizTheme from './graphviz';
 
 const colors = {
   black: '#000000',
@@ -11,48 +11,36 @@ const colors = {
   green: '#98c379',
 };
 
-const base = {
+const dark: GraphvizTheme = {
   backgroundColor: colors.darkGrey,
   textColor: colors.white,
   hoverColor: colors.blue,
   hoverTextColor: colors.black,
-};
-
-const graphArea: Theme = {
-  backgroundColor: colors.lightGrey,
-};
-
-const graphInput: Theme = {
-  autoUpdate: {
-    backgroundColor: colors.green,
-    inactive: {
-      backgroundColor: colors.red,
+  graphArea: {
+    backgroundColor: colors.lightGrey,
+  },
+  graphInput: {
+    autoUpdate: {
+      backgroundColor: colors.green,
+      inactive: {
+        backgroundColor: colors.red,
+      },
     },
   },
-};
-
-const optionsSelector: Theme = {
-  input: {
-    backgroundColor: colors.lightGrey,
-    textColor: colors.white,
+  optionsSelector: {
+    input: {
+      backgroundColor: colors.lightGrey,
+      textColor: colors.white,
+    },
   },
-};
-
-const tabContainer: Theme = {
-  backgroundColor: lighten(0.3, base.backgroundColor),
-  textColor: colors.black,
-  inactiveTabs: {
-    backgroundColor: colors.lightGrey,
-    textColor: colors.white,
+  tabContainer: {
+    backgroundColor: lighten(0.3, colors.darkGrey),
+    textColor: colors.black,
+    inactiveTabs: {
+      backgroundColor: colors.lightGrey,
+      textColor: colors.white,
+    },
   },
-};
-
-const dark: Theme = {
-  ...base,
-  graphArea,
-  graphInput,
-  optionsSelector,
-  tabContainer,
 };
 
 export default dark;
