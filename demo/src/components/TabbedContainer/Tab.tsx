@@ -20,7 +20,6 @@ const Button = styled.button<{ active: boolean }>`
   color: ${(props) => (props.active ? textColor : inactiveTextColor)};
   background-color: ${(props) =>
     props.active ? backgroundColor : inactiveBackgroundColor};
-  font-weight: ${(props) => (props.active ? 'bold' : 'normal')};
   :hover {
     background-color: ${hoverColor};
     color: ${hoverTextColor};
