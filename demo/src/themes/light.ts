@@ -1,10 +1,4 @@
-import { lighten, darken } from 'polished';
-import styled from 'styled-components';
 import GraphvizTheme from './graphviz';
-
-// styled.div`
-//   background-color: pap;
-// `;
 
 const colors = {
   black: '#000000',
