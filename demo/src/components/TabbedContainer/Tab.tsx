@@ -1,30 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
-import { lighten } from 'polished';
+import { getProperty } from '../../themes';
 
-const tabBgActive = theme('mode', {
-  dark: lighten(0.25, '#282c34'),
-});
+const background = (active: boolean) =>
+  getProperty('backgroundColor', [
+    'tabContainer',
+    ...(!active ? ['inactiveTabs'] : []),
+  ]);
 
-const tabBgHovered = theme('mode', {
-  dark: '#61afef',
-});
-
-const tabBg = theme('mode', {
-  dark: lighten(0.4, '#282c34'),
-});
-
-const textColor = theme('mode', {
-  dark: 'black',
-});
+const textColor = (active: boolean) =>
+  getProperty('textColor', [
+    'tabContainer',
+    ...(!active ? ['inactiveTabs'] : []),
+  ]);
 
 const Button = styled.button<{ active: boolean }>`
   border: none;
-  color: ${textColor};
-  background-color: ${(props) => (props.active ? tabBgActive : tabBg)};
+  color: ${(props) => textColor(props.active)};
+  background-color: ${(props) => background(props.active)};
   :hover {
-    background-color: ${tabBgHovered};
+    background-color: ${getProperty('hoverColor', ['tabContainer'])};
   }
   :focus {
     outline: none;
