@@ -1,9 +1,11 @@
 import theme from 'styled-theming';
 import dark from './dark';
+import light from './light';
 import { getPropertyForThemes, ThemeElements } from './theme';
 
 export const themes = {
   dark,
+  light,
 };
 
 export const getThemeProperty = (
