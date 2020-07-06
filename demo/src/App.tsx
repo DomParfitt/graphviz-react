@@ -1,77 +1,64 @@
-import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import type { GraphvizOptions } from 'd3-graphviz';
+import React, { useState } from 'react';
+import {
+  GraphInput,
+  Graphviz,
+  Grid,
+  OptionsSelector,
+  Options,
+  TabbedContainer,
+  ThemePicker,
+  Title,
+} from './components';
+import { themes } from './themes';
 
-import { OptionsSelector, IOption } from './components/OptionSelector';
-import { GraphInput } from './components/GraphInput';
-import { GraphvizOptions } from 'd3-graphviz';
-import { Row, Col, Container } from 'react-bootstrap';
-import { Graphviz } from 'graphviz-react';
+const { innerWidth, innerHeight } = window;
 
-const defaults: GraphvizOptions = {
-  height: 550,
-  width: 550,
-  fit: true,
-  zoom: false,
+const defaults: Options<GraphvizOptions> = {
+  height: Math.floor(innerHeight * 0.7),
+  width: Math.floor(innerWidth * 0.75),
   scale: 1,
   tweenPrecision: 1,
   engine: 'dot',
+  keyMode: 'title',
+  convertEqualSidedPolygons: false,
+  fade: false,
+  growEnteringEdges: false,
+  fit: true,
+  tweenPaths: false,
+  tweenShapes: false,
+  useWorker: false,
+  zoom: false,
 };
 
-const options: IOption[] = [
-  { name: 'useWorker', type: 'boolean' },
-  { name: 'engine', type: 'list', values: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'], default: defaults.engine },
-  { name: 'keyMode', type: 'list', values: ['title', 'id', 'tag-index', 'index'] },
-  { name: 'fade', type: 'boolean' },
-  { name: 'tweenPaths', type: 'boolean' },
-  { name: 'tweenShapes', type: 'boolean' },
-  { name: 'convertEqualSidedPolygons', type: 'boolean' },
-  { name: 'tweenPrecision', type: 'number', default: defaults.tweenPrecision },
-  { name: 'growEnteringEdges', type: 'boolean' },
-  { name: 'zoom', type: 'boolean', default: defaults.zoom },
-  { name: 'width', type: 'number', default: defaults.width },
-  { name: 'height', type: 'number', default: defaults.height },
-  { name: 'scale', type: 'number', default: defaults.scale },
-  { name: 'fit', type: 'boolean', default: defaults.fit },
-];
+const allowedValues = {
+  engine: ['circo', 'dot', 'fdp', 'neato', 'osage', 'patchwork', 'twopi'],
+  keyMode: ['title', 'id', 'tag-index', 'index'],
+};
 
-export default class App extends React.Component<any, AppState> {
+const App = () => {
+  const [dot, setDot] = useState('graph { a }');
+  const [graphOptions, setGraphOptions] = useState(defaults);
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      dot: 'graph { a }',
-      graphOptions: defaults,
-    };
-  }
+  return (
+    <ThemePicker themes={Object.keys(themes)}>
+      <Title>Graphviz-React</Title>
+      <Grid>
+        <TabbedContainer labels={['Input', 'Settings']}>
+          <GraphInput initialDot={dot} onUpdate={(newDot) => setDot(newDot)} />
+          <OptionsSelector
+            options={graphOptions}
+            onChange={(name, value) =>
+              setGraphOptions({ ...graphOptions, [name]: value })
+            }
+            allowedValues={allowedValues}
+          />
+        </TabbedContainer>
+        <Graphviz dot={dot} options={graphOptions} />
+      </Grid>
+    </ThemePicker>
+  );
+};
 
-  public render(): JSX.Element {
-    return (
-      <div>
-        <h1 style={{ textAlign: "center" }}>Graphviz-React</h1>
-        <Container fluid={true}>
-          <Row>
-            <Col sm={2}>
-              <GraphInput dot={this.state.dot} onUpdate={(dot) => this.setState({ dot })} />
-            </Col>
-            <Col>
-              <OptionsSelector options={options} onOptionUpdate={this.onOptionUpdate} />
-            </Col>
-            <Col>
-              <Graphviz dot={this.state.dot} options={this.state.graphOptions} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
-  }
-
-  private onOptionUpdate = (name: string, value: any) => {
-    const graphOptions = { ...this.state.graphOptions };
-    graphOptions[name] = value;
-    this.setState({ graphOptions });
-  }
-}
-
-interface AppState {
-  dot: string,
-  graphOptions: any,
-}
+export default App;

@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "only-warn",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb-typescript",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "rules": {
+    "prettier/prettier": "warn",
+    "react/jsx-curly-newline": "off",
+    "@typescript-eslint/indent": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "depth": 2
+      }
+    ]
+  }
+}

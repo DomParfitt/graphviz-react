@@ -61,9 +61,14 @@ The below shows a simple React component using the Graphviz component to render 
 
 ### Props
 
-The Graphviz component has two props: `dot` and `options`.
+The following props are available to the component:
+```typescript
+dot: string
+options?: GraphvizOptions
+className?: string
+```
 
-`dot` is required for all instances of the component. It expects a string containing a valid graph definition using the Graphviz DOT language. Details of the DOT language can be found [here](https://graphviz.gitlab.io/_pages/doc/info/lang.html). Note that neither the component nor the underlying renderer check the validity of the DOT string.
+`dot` is required for all instances of the component. It expects a string containing a valid graph definition using the Graphviz DOT language. Details of the DOT language can be found [here](https://www.npmjs.com/package/d3-graphviz/v/2.6.1#creating-a-graphviz-renderer). Note that neither the component nor the underlying renderer check the validity of the DOT string.
 
 `options` is an optional array of rendering options for the component. It is aligned with the options accepted by the d3-graphviz renderer (see the [API](https://www.npmjs.com/package/d3-graphviz#creating-a-graphviz-renderer) for details). The follow values are set by default:
 
@@ -75,6 +80,8 @@ zoom: false
 ```
 
 Any provided options are treated as additive to the default options. That is, the values above will not be overwritten by the provided options unless explicitly done so.
+
+`className` attaches an HTML `class` attribute to the top level of the component to allow for easier styling.
 
 ## Dependencies
 
