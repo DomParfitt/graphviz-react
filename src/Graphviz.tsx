@@ -1,7 +1,22 @@
 import * as React from 'react';
 import { graphviz, GraphvizOptions } from 'd3-graphviz';
 
-export class Graphviz extends React.Component<IGraphvizProps, any> {
+interface IGraphvizProps {
+  /**
+   * A string containing a graph representation using the Graphviz DOT language.
+   * @see https://graphviz.org/doc/info/lang.html
+   */
+  dot: string;
+  /**
+   * Options to pass to the Graphviz renderer.
+   */
+  options?: GraphvizOptions;
+  /**
+   * The classname to attach to this component for styling purposes.
+   */
+  className?: string;
+}
+class Graphviz extends React.Component<IGraphvizProps, any> {
   private static count = 0;
 
   private static defaultOptions: GraphvizOptions = {
@@ -45,8 +60,5 @@ export class Graphviz extends React.Component<IGraphvizProps, any> {
   };
 }
 
-export interface IGraphvizProps extends React.ClassAttributes<Graphviz> {
-  dot: string;
-  options?: GraphvizOptions;
-  className?: string;
-}
+export { Graphviz, IGraphvizProps };
+export default Graphviz;
