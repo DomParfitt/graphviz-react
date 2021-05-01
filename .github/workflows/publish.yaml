@@ -1,0 +1,70 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: The release type to publish (major, minor or patch)
+        required: true
+        default: patch
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check version type
+        run: '[[ ${{ github.event.inputs.version_type }} =~ ^(major|minor|patch)$ ]] || exit 1'       
+        shell: bash  
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install packages
+        run: npm install
+
+      - name: Get Current Package Version
+        id: current_version
+        run: |
+          version=$(sed -En 's/^\s*"version": "(.*)",/\1/p' package.json)
+          echo "::set-output name=version::${version}"
+
+      - name: Increment Package Version
+        run: npm version ${{ github.event.inputs.version_type }}
+
+      - name: Get New Package Version
+        id: new_version
+        run: |
+          version=$(sed -En 's/^\s*"version": "(.*)",/\1/p' package.json)
+          echo "::set-output name=version::${version}"
+
+      # - name: Publish to NPM
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update CHANGELOG
+        run: |
+          sed -i \
+            -e "s/^## Unreleased$/## [${{ steps.current_version.outputs.version }}]/g" \
+            -e "/^## \[${{ steps.current_version.outputs.version }}\]/i ## Unreleased\n" \
+            -e "/^\[${{ steps.previous_version.outputs.version }}\].*/i [${{ steps.current_version.outputs.version }}]: https://github.com/DomParfitt/graphviz-react/compare/v${{ steps.previous_version.outputs.version }}...v${{ steps.current_version.outputs.version }}" \
+            CHANGELOG.md
+        shell: bash
+
+      # - name: Create Release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+      #   with:
+      #     tag_name: v${{ steps.current_version.outputs.version }}
+      #     release_name: Release v${{ steps.current_version.outputs.version }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Publish version
+          reviewers: DomParfitt
