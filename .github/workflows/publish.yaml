@@ -46,10 +46,10 @@ jobs:
       - name: Install packages
         run: npm install
 
-      # - name: Publish to NPM
-      #   run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Update CHANGELOG
         run: |
@@ -60,13 +60,13 @@ jobs:
             CHANGELOG.md
         shell: bash
 
-      # - name: Create Release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
-      #   with:
-      #     tag_name: v${{ steps.new_version.outputs.version }}
-      #     release_name: Release v${{ steps.new_version.outputs.version }}
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+        with:
+          tag_name: v${{ steps.new_version.outputs.version }}
+          release_name: Release v${{ steps.new_version.outputs.version }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
