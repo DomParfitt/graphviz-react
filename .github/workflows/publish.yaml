@@ -49,9 +49,9 @@ jobs:
       - name: Update CHANGELOG
         run: |
           sed -i \
-            -e "s/^## Unreleased$/## [${{ steps.current_version.outputs.version }}]/g" \
-            -e "/^## \[${{ steps.current_version.outputs.version }}\]/i ## Unreleased\n" \
-            -e "/^\[${{ steps.previous_version.outputs.version }}\].*/i [${{ steps.current_version.outputs.version }}]: https://github.com/DomParfitt/graphviz-react/compare/v${{ steps.previous_version.outputs.version }}...v${{ steps.current_version.outputs.version }}" \
+            -e "s/^## Unreleased$/## [${{ steps.new_version.outputs.version }}]/g" \
+            -e "/^## \[${{ steps.new_version.outputs.version }}\]/i ## Unreleased\n" \
+            -e "/^\[${{ steps.current_version.outputs.version }}\].*/i [${{ steps.new_version.outputs.version }}]: https://github.com/DomParfitt/graphviz-react/compare/v${{ steps.current_version.outputs.version }}...v${{ steps.new_version.outputs.version }}" \
             CHANGELOG.md
         shell: bash
 
@@ -66,5 +66,5 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: Publish version
+          title: Publish version v${{ steps.new_version.outputs.version }}
           reviewers: DomParfitt
