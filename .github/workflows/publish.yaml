@@ -33,7 +33,7 @@ jobs:
           echo "::set-output name=version::${version}"
 
       - name: Increment Package Version
-        run: npm version ${{ github.event.inputs.version_type }}
+        run: npm version ${{ github.event.inputs.version_type }} -f
 
       - name: Get New Package Version
         id: new_version
