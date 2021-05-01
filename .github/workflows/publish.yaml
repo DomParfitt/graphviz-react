@@ -23,9 +23,6 @@ jobs:
           node-version: '14'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install packages
-        run: npm install
-
       - name: Get Current Package Version
         id: current_version
         run: |
@@ -33,13 +30,16 @@ jobs:
           echo "::set-output name=version::${version}"
 
       - name: Increment Package Version
-        run: npm --no-git-tag-version version ${{ github.event.inputs.version_type }}
+        run: npm version ${{ github.event.inputs.version_type }}
 
       - name: Get New Package Version
         id: new_version
         run: |
           version=$(sed -En 's/^\s*"version": "(.*)",/\1/p' package.json)
           echo "::set-output name=version::${version}"
+
+      - name: Install packages
+        run: npm install
 
       # - name: Publish to NPM
       #   run: npm publish
@@ -60,8 +60,8 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
       #   with:
-      #     tag_name: v${{ steps.current_version.outputs.version }}
-      #     release_name: Release v${{ steps.current_version.outputs.version }}
+      #     tag_name: v${{ steps.new_version.outputs.version }}
+      #     release_name: Release v${{ steps.new_version.outputs.version }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
