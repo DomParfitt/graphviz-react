@@ -51,6 +51,11 @@ class Graphviz extends React.Component<IGraphvizProps, any> {
 
   private renderGraph = () => {
     const { dot, options } = this.props;
+
+    if (!options?.zoom) {
+      document.querySelector(`#${this.id}`)?.childNodes.forEach((child) => child.remove());
+    }
+
     graphviz(`#${this.id}`)
       .options({
         ...Graphviz.defaultOptions,
