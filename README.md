@@ -240,7 +240,7 @@ A more complex example, using ranking and other features of Graphviz:
 />
 ```
 
-![Screen Shot 2021-05-31 at 22 33 07](https://user-images.githubusercontent.com/1935696/120240245-60b42600-c260-11eb-8b25-92afa2e067f2.png)
+<img src="./img/example-digraph-complex.png">
 
 
 ## Dependencies
