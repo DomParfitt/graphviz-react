@@ -114,6 +114,135 @@ The below shows a simple React component using the Graphviz component to render 
 
 <img width="402" src="./img/example-digraph.png">
 
+A more complex example, using ranking and other features of Graphviz:
+
+```jsx
+<Graphviz
+  dot={`digraph {
+    newrank = true;
+    rankdir = LR;
+    graph [bgcolor = black];
+    color = white;
+    fontname = helvetica;
+    fontsize = 40;
+    fontcolor = white;
+    node [
+      fillcolor = transparent;
+      color = transparent;
+      style = filled;
+      fontname = helvetica;
+      fontsize = 40;
+      fontcolor = white;
+    ];
+    edge [
+      color = white;
+      penwidth = 8;
+      fontname = helvetica;
+      fontcolor = white;
+      labeldistance = 10;
+    ];
+    nodesep = 1.1;
+    //
+    subgraph cluster_frontend {
+      label = <<br /><b>👤 Frontend</b><br /><br /><br />>;
+      color = transparent;
+      style = filled;
+      fillcolor = gray20;
+      webapp[label = "🖥 Web App";];
+      mobileapp[label = "📱 Mobile App"];
+      webapp -> mobileapp [style = invis];
+    }
+    //
+    subgraph cluster_backend {
+      label = <<br />                                                                              <b>Backend</b><br /><br />>;
+      server[label = "💻 Server"];
+      color = transparent;
+      style = filled;
+      fillcolor = gray20;
+      db[ label = "🛢 Database"];
+      fileserver[label = "🗃 File Server"];
+      another[label = "❓ Another\\lBackend Service"];
+      server -> db [
+        label = <
+          <table border="0" cellborder="0">
+            <tr>
+              <td><font point-size="28"><i>Query database</i></font></td>
+            </tr>
+          </table>
+        >;
+      ];
+      server -> fileserver [
+        label = <
+          <table border="0" cellborder="0">
+            <tr>
+              <td align="text"><br /><br /><font point-size="28"><i>Read files<br />    from file server    </i></font></td>
+            </tr>
+          </table>
+        >;
+      ];
+      server -> another;
+      another -> fileserver [style = invis];
+    }
+    //
+    subgraph cluster_external {
+      label = <<br /><b>External</b><br /><br />>;
+      external[label = "🧱 External Service 1";];
+      external2[label = "🧱 External Service 2"];
+    }
+    //
+    external -> mobileapp -> external [style = invis];
+    webapp -> server [
+      constraint = false;
+      xlabel = <
+        <table border="0" cellborder="0">
+          <tr>
+            <td align="text">
+              <font point-size="28"><i>Fetch<br />   from server   </i></font><br align="right" />
+            </td>
+          </tr>
+        </table>
+      >;
+    ];
+    mobileapp -> server [
+      label = <
+        <table border="0" cellborder="0">
+          <tr>
+            <td>
+              <font point-size="28" align="text"><i>Fetch<br />from server</i></font>
+            </td>
+          </tr>
+        </table>
+      >;
+    ];
+    webapp -> external;
+    mobileapp -> external2;
+    server -> external2;
+    //
+    {
+      rank = same;
+      webapp;
+      server;
+      another;
+    };
+    {
+      rank = same;
+      mobileapp;
+      fileserver;
+    };
+    {
+      rank = same;
+      external;
+      external2;
+      db;
+    };
+  }`}
+  options={{ width: '1200', height: '700' }}
+/>
+```
+
+![Screen Shot 2021-05-31 at 22 33 07](https://user-images.githubusercontent.com/1935696/120240245-60b42600-c260-11eb-8b25-92afa2e067f2.png)
+
+
 ## Dependencies
 
 1. [React](https://www.npmjs.com/package/react)
