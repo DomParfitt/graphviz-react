@@ -2,6 +2,7 @@
   "name": "graphviz-react",
   "version": "1.2.0",
   "description": "React component for displaying Graphviz graphs",
+  "type": "module",
   "main": "./lib/Graphviz.js",
   "types": "./lib/Graphviz.d.ts",
   "scripts": {
