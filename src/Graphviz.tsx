@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useMemo } from 'react';
 import { graphviz, GraphvizOptions } from 'd3-graphviz';
 
 interface IGraphvizProps {
@@ -16,49 +17,32 @@ interface IGraphvizProps {
    */
   className?: string;
 }
-class Graphviz extends React.Component<IGraphvizProps, any> {
-  private static count = 0;
 
-  private static defaultOptions: GraphvizOptions = {
-    fit: true,
-    height: 500,
-    width: 500,
-    zoom: false,
-  };
+const defaultOptions: GraphvizOptions = {
+  fit: true,
+  height: 500,
+  width: 500,
+  zoom: false,
+};
 
-  private id: string;
+let counter = 0;
+// eslint-disable-next-line no-plusplus
+const getId = () => `graphviz${counter++}`;
 
-  constructor(props: IGraphvizProps) {
-    super(props);
-    this.id = `graphviz${Graphviz.count}`;
-    Graphviz.count += 1;
-  }
+const Graphviz = ({ dot, className, options = {} }: IGraphvizProps) => {
+  const id = useMemo(getId, []);
 
-  public render = (): JSX.Element => {
-    const { className } = this.props;
-    return (
-      <div className={className} id={this.id} />
-    );
-  };
-
-  public componentDidMount = () => {
-    this.renderGraph();
-  };
-
-  public componentDidUpdate = () => {
-    this.renderGraph();
-  };
-
-  private renderGraph = () => {
-    const { dot, options } = this.props;
-    graphviz(`#${this.id}`)
+  useEffect(() => {
+    graphviz(`#${id}`)
       .options({
-        ...Graphviz.defaultOptions,
-        ...options || {},
+        ...defaultOptions,
+        ...options,
       })
       .renderDot(dot);
-  };
-}
+  }, [dot, options]);
+
+  return <div className={className} id={id} />;
+};
 
 export { Graphviz, IGraphvizProps };
 export default Graphviz;
