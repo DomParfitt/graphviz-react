@@ -14,4 +14,24 @@ describe('<Graphviz />', () => {
     const tree = render(<Graphviz dot={'graph { a -- b }'} />);
     expect(tree).toMatchSnapshot();
   });
+
+  it('generates a unique id for each instance', () => {
+    const first = <Graphviz className="foo" dot={'graph { a -- b }'} />;
+    const second = <Graphviz className="foo" dot={'graph { c -- d }'} />;
+
+    const { container } = render(
+      <>
+        {first}
+        {second}
+      </>
+    );
+
+    const ids = Array.from(container.getElementsByClassName('foo')).map(
+      (el) => el.id
+    );
+    const idSet = new Set(ids);
+
+    expect(ids.length).toBe(2);
+    expect(ids.length).toEqual(idSet.size);
+  });
 });
