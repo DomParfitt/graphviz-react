@@ -10,6 +10,8 @@
     "declaration": true,
     "sourceMap": true,
     "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "typeRoots": [
       "index.d.ts",
       "node_modules/@types"

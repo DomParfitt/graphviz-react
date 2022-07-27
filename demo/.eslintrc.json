@@ -15,14 +15,28 @@
     "project": "tsconfig.json"
   },
   "rules": {
-    "prettier/prettier": "warn",
-    "react/jsx-curly-newline": "off",
     "@typescript-eslint/indent": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "consistent-return": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
         "depth": 2
       }
-    ]
+    ],
+    "prettier/prettier": "warn",
+    "react/jsx-curly-newline": "off",
+    "react/require-default-props": "off"
   }
 }
