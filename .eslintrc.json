@@ -3,12 +3,34 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "only-warn"
+    "only-warn",
+    "prettier"
   ],
   "extends": [
-    "airbnb-typescript"
+    "airbnb-typescript/base",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "project": "tsconfig.eslint.json"
+  },
+  "rules": {
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "consistent-return": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "prettier/prettier": "warn",
+    "react/require-default-props": "off"
   }
 }
