@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Children, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import TabBar from './TabBar';
 import { getThemeProperties } from '../../themes';
@@ -17,7 +17,7 @@ const Item = styled.div`
 
 export interface TabbedContainerProps {
   labels?: string[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export const TabbedContainer = ({
@@ -26,7 +26,7 @@ export const TabbedContainer = ({
 }: TabbedContainerProps) => {
   const [visibleChild, setVisibleChild] = useState(0);
 
-  const padding = React.Children.count(children) - labels.length;
+  const padding = Children.count(children) - labels.length;
   const paddedLabels = [...labels, ...new Array(padding).fill(undefined)].map(
     (value, index) => value ?? index
   );
@@ -38,7 +38,7 @@ export const TabbedContainer = ({
         onClick={(index) => setVisibleChild(index)}
       />
 
-      <Item>{React.Children.toArray(children)[visibleChild]}</Item>
+      <Item>{Children.toArray(children)[visibleChild]}</Item>
     </Container>
   );
 };

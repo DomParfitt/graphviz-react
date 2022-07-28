@@ -1,5 +1,5 @@
 import { read } from 'graphlib-dot';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import examples from '../../examples';
 import InputArea from './InputArea';

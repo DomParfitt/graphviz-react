@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { GraphvizOptions } from 'd3-graphviz';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   GraphInput,
   Graphviz,

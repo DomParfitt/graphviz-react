@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useEffect, useMemo } from 'react';
 import { graphviz, GraphvizOptions } from 'd3-graphviz';
 

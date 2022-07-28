@@ -1,7 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import { OptionValue } from './types';
 import { getThemeProperties } from '../../themes';
+import { ChangeEvent } from 'react';
 
 const path = ['optionsSelector', 'input'];
 const { backgroundColor, textColor } = getThemeProperties(path);
@@ -58,7 +58,7 @@ const OptionInput = ({
         <Input
           as="select"
           defaultValue={value}
-          onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+          onChange={(event: ChangeEvent<HTMLSelectElement>) =>
             onChange(event.target.value)
           }
         >

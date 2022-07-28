@@ -1,4 +1,4 @@
-import React from 'react';
+import { Children } from 'react';
 import styled from 'styled-components';
 import { getThemeProperties } from '../themes';
 
@@ -20,12 +20,9 @@ interface GridProps {
   columns?: number;
 }
 
-const Grid = ({
-  children,
-  columns = React.Children.count(children),
-}: GridProps & { children: React.ReactNode }) => (
+const Grid = ({ children }: GridProps & { children: React.ReactNode }) => (
   <Container>
-    {React.Children.map(children, (child) => (
+    {Children.map(children, (child) => (
       <Item>{child}</Item>
     ))}
   </Container>

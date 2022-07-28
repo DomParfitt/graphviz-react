@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import OptionInput from './OptionInput';
 import { OptionValue, OptionsType } from './types';
