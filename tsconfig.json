@@ -9,7 +9,7 @@
     "removeComments": true,
     "declaration": true,
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "typeRoots": [
@@ -19,7 +19,6 @@
   },
   "exclude": [
     "demo/**",
-    "lib/**",
-    "src/**/*.test.tsx"
+    "lib/**"
   ]
 }

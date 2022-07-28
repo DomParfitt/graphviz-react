@@ -7,8 +7,8 @@
     "graphlib-dot": "^0.6.4",
     "graphviz-react": "file:..",
     "polished": "^3.6.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.1.1",
     "styled-theming": "^2.2.0"
   },
@@ -33,7 +33,7 @@
     "gh-pages": "^2.2.0",
     "prettier": "^2.0.5",
     "react-scripts": "^4.0.3",
-    "typescript": "^3.9.7"
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts --max_old_space_size=4096 start",
