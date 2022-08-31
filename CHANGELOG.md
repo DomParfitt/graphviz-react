@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Changed
 - Converted `Graphviz` component to a functional component
+- Passed options via constructor rather than `options` method
 
 ## [1.2.1]
 ### Changed
