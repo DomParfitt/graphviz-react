@@ -33,12 +33,10 @@ const Graphviz = ({ dot, className, options = {} }: IGraphvizProps) => {
   const id = useMemo(getId, []);
 
   useEffect(() => {
-    graphviz(`#${id}`)
-      .options({
-        ...defaultOptions,
-        ...options,
-      })
-      .renderDot(dot);
+    graphviz(`#${id}`, {
+      ...defaultOptions,
+      ...options,
+    }).renderDot(dot);
   }, [dot, options]);
 
   return <div className={className} id={id} />;
