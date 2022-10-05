@@ -28,6 +28,7 @@
     "clean-build": "npm run clean && npm run build",
     "lint": "eslint . --max-warnings=0",
     "prepublishOnly": "npm run clean-build",
+    "postbuild": "test -f lib/Graphviz.js && test -f lib/Graphviz.js.map && test -f lib/Graphviz.d.ts",
     "test": "jest"
   },
   "dependencies": {
