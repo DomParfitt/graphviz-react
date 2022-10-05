@@ -70,6 +70,8 @@ workflows:
                 - '12.13'
                 - '14.19'
                 - '16.15'
+                - 'lts'
+                - 'current'
           requires:
             - install
       - test:
