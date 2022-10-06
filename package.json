@@ -32,8 +32,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "d3-graphviz": "^2.6.1",
-    "react": "^16.13.1"
+    "d3-graphviz": "^2.6.1"
+  },
+  "peerDependencies": {
+    "react": ">= 16.13.1"
   },
   "devDependencies": {
     "@testing-library/react": "^10.4.7",
