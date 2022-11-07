@@ -33,7 +33,12 @@ let counter = 0;
 // eslint-disable-next-line no-plusplus
 const getId = () => `graphviz${counter++}`;
 
-const Graphviz = ({ dot, className, options = {}, callback }: IGraphvizProps) => {
+const Graphviz = ({
+  dot,
+  className,
+  options = {},
+  callback,
+}: IGraphvizProps) => {
   const id = useMemo(getId, []);
 
   useEffect(() => {
