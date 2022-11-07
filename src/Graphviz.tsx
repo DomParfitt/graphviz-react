@@ -16,6 +16,10 @@ interface IGraphvizProps {
    * The classname to attach to this component for styling purposes.
    */
   className?: string;
+  /**
+   * The callback function to call when the graph is rendered.
+   */
+  callback?: () => void;
 }
 
 const defaultOptions: GraphvizOptions = {
@@ -29,14 +33,19 @@ let counter = 0;
 // eslint-disable-next-line no-plusplus
 const getId = () => `graphviz${counter++}`;
 
-const Graphviz = ({ dot, className, options = {} }: IGraphvizProps) => {
+const Graphviz = ({
+  dot,
+  className,
+  options = {},
+  callback,
+}: IGraphvizProps) => {
   const id = useMemo(getId, []);
 
   useEffect(() => {
     graphviz(`#${id}`, {
       ...defaultOptions,
       ...options,
-    }).renderDot(dot);
+    }).renderDot(dot, callback);
   }, [dot, options]);
 
   return <div className={className} id={id} />;
